@@ -1,16 +1,11 @@
-# budget_mate
+**BudgetMate**  
+_BudgetMate is a smart and efficient budgeting app designed to simplify expense tracking. With advanced features like receipt scanning and automatic expense categorization, BudgetMate helps you stay in control of your finances with minimal effort._
 
-A new Flutter project.
+### Key Features:
+- **Receipt Scanning**: Automatically extract and categorize expenses from scanned receipts.  
+- **Smart Budgeting**: Set up budgets, track spending, and get insightful reports.  
+- **Expense Categorization**: Automatically group expenses into categories like groceries, utilities, and entertainment.  
+- **Real-Time Updates**: Add items to your budget instantly with a seamless scanning process.  
+- **Visual Insights**: Intuitive graphs and charts to monitor your financial health.  
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Whether you're managing household finances or saving for your next big goal, BudgetMate is the perfect companion to help you achieve your financial objectives.
