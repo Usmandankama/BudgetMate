@@ -1,0 +1,1 @@
+ C:\\Users\\USMAN\\Desktop\\Github\ projects\\BudgetMate\\.dart_tool\\flutter_build\\71c9b1faed06f5959d0accb821b86f36\\native_assets.yaml: 
