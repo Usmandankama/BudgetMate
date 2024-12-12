@@ -1,4 +1,4 @@
-import 'package:budget_mate/screens/home_screen.dart';
+import 'package:budget_mate/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'BudgetMate',
       theme: ThemeData(
       ),
-      home:  const HomeScreen(),
+      home:  const LoginScreen(),
     );
   }
 }
