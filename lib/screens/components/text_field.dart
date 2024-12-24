@@ -26,16 +26,11 @@ class CustomTextfield extends StatelessWidget {
       decoration: InputDecoration(
         labelText: label,
         prefixIcon: Icon(icon, color: AppColors.fontLight),
-        enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(
-            color: AppColors.fontLight,
-          )
-        ),
         border: OutlineInputBorder(
           borderSide: const BorderSide(
             color: AppColors.fontLight,
           ),
-          borderRadius: BorderRadius.circular(12.0.r),
+          borderRadius: BorderRadius.circular(16.0.r),
         ),
       ),
     );
