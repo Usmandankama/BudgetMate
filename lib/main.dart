@@ -1,5 +1,6 @@
 import 'package:budget_mate/screens/login_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,13 +12,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'BudgetMate',
-      theme: ThemeData(
-      ),
-      home:  const LoginScreen(),
+    return ScreenUtilInit(
+      designSize: const Size(393, 852),
+      builder: (_, __) {
+        return const MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home:  LoginScreen()
+        );
+      },
     );
   }
 }
-
