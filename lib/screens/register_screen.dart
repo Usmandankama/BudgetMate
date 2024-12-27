@@ -78,50 +78,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
                 SizedBox(height: 30.h),
-                Padding(
-                  padding: const EdgeInsets.only(left:25.0),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Forgot password? ",
-                        style: TextStyle(
-                          fontFamily: 'Montserrat',
-                          fontSize: 13.sp,
-                          color: AppColors.fontLight,
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          // Navigate to registration screen
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const LoginScreen(),
-                            ),
-                          );
-                        },
-                        child: GestureDetector(
-                          onTap: (){
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const forgotPasswordScreen(),
-                              ),
-                            );
-                          },
-                          child: Text(
-                            'Reset',
-                            style: TextStyle(
-                              fontFamily: 'Montserrat',
-                              fontSize: 13.sp,
-                              color: AppColors.secondaryColor,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
                 SizedBox(height: 30.h),
                 ActionButton(title: 'Register', onPressed: signIn),
                 SizedBox(height: 30.h),
