@@ -1,6 +1,7 @@
 import 'package:budget_mate/constatnts/colors.dart';
 import 'package:budget_mate/screens/components/actionButton.dart';
 import 'package:budget_mate/screens/components/text_field.dart';
+import 'package:budget_mate/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -74,7 +75,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         thickness: 1, // Line thickness
                       ),
                     ),
-                    SizedBox(width: 10.w), // Add spacing between text and divider
+                    SizedBox(
+                        width: 10.w), // Add spacing between text and divider
                     Text(
                       'or login with',
                       style: TextStyle(
@@ -147,12 +149,23 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: AppColors.fontLight,
                       ),
                     ),
-                    Text(
-                      'Register',
-                      style: TextStyle(
-                        fontFamily: 'Montserrat',
-                        fontSize: 13.sp,
-                        color: AppColors.secondaryColor,
+                    GestureDetector(
+                      onTap: () {
+                        // Navigate to registration screen
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const RegisterScreen(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        'Register',
+                        style: TextStyle(
+                          fontFamily: 'Montserrat',
+                          fontSize: 13.sp,
+                          color: AppColors.secondaryColor,
+                        ),
                       ),
                     ),
                   ],
