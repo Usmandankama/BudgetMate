@@ -1,4 +1,5 @@
-import 'package:budget_mate/screens/login_screen.dart';
+import 'package:budget_mate/screens/home/home_screen.dart';
+import 'package:budget_mate/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       builder: (_, __) {
         return const MaterialApp(
           debugShowCheckedModeBanner: false,
-          home:  LoginScreen()
+          home:  HomeScreen()
         );
       },
     );
