@@ -2,3 +2,6 @@
 /.dart_tool
 /.dart_tool
 /android/.gradle/7.6.3/executionHistory
+/.dart_tool
+/android/.gradle
+/.dart_tool

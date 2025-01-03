@@ -30,7 +30,6 @@ class _forgotPasswordScreenState extends State<forgotPasswordScreen> {
                 style: TextStyle(
                   color: AppColors.fontLight,
                   fontFamily: 'Montserrat',
-                  fontSize: 36.sp,
                 ),
               ),
               SizedBox(height: 50.h),
