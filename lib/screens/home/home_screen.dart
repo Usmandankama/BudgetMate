@@ -1,5 +1,6 @@
 import 'package:budget_mate/constatnts/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -13,12 +14,22 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
-      appBar: AppBar(
-        backgroundColor: AppColors.primaryColor,
-        title: const Row(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal:20.0),
+        child: Column(
           children: [
-            CircleAvatar(
-              backgroundImage: AssetImage('assets/images/avatar.jpeg'),
+            SizedBox(height: 30.h),
+            Row(
+              children: [
+                CircleAvatar(
+                  backgroundImage: AssetImage('assets/images/avatar.jpeg'),
+                ),
+                CircleAvatar(
+                  child: Icon(Icons.notifications),
+                ),
+            SizedBox(height: 30.h),
+            Text('')
+              ],
             )
           ],
         ),
