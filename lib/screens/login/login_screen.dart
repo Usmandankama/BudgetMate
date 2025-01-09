@@ -1,6 +1,7 @@
 import 'package:budget_mate/constatnts/colors.dart';
 import 'package:budget_mate/screens/components/actionButton.dart';
 import 'package:budget_mate/screens/components/text_field.dart';
+import 'package:budget_mate/screens/home/home_screen.dart';
 import 'package:budget_mate/screens/login/forgot_password_screen.dart';
 import 'package:budget_mate/screens/register/register_screen.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,14 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  void signIn() {}
+  void signIn() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const HomeScreen(),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
