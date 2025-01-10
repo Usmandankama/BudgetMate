@@ -39,7 +39,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 Text(
                   'Sign in or \ncreate an account',
                   style: TextStyle(
-                    color: AppColors.fontLight,
+                    color: AppColors.fontWhite,
                     fontFamily: 'Montserrat',
                     fontSize: 36.sp,
                   ),
@@ -92,7 +92,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       style: TextStyle(
                         fontFamily: 'Montserrat',
                         fontSize: 13.sp,
-                        color: AppColors.fontLight,
+                        color: AppColors.fontWhite,
                       ),
                     ),
                     GestureDetector(

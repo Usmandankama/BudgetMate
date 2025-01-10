@@ -34,7 +34,7 @@ class SplashItem extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 32.sp,
                     fontFamily: 'Montserrat',
-                    color: AppColors.fontLight),
+                    color: AppColors.fontWhite),
               ),
               const SizedBox(height: 10),
               Text(
@@ -43,7 +43,7 @@ class SplashItem extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 15.sp,
                     fontFamily: 'Montserrat',
-                    color: AppColors.fontLight),
+                    color: AppColors.fontWhite),
               ),
             ],
           ),

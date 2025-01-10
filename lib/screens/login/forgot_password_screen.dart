@@ -28,7 +28,7 @@ class _forgotPasswordScreenState extends State<forgotPasswordScreen> {
               Text(
                 'Reset password',
                 style: TextStyle(
-                  color: AppColors.fontLight,
+                  color: AppColors.fontWhite,
                   fontFamily: 'Montserrat',
                 ),
               ),
@@ -37,7 +37,7 @@ class _forgotPasswordScreenState extends State<forgotPasswordScreen> {
                   textAlign: TextAlign.center,
                   'Enter your registered email address and we will send you a password reset link.',
                   style: TextStyle(
-                    color: AppColors.fontLight,
+                    color: AppColors.fontWhite,
                     fontFamily: 'Montserrat',
                   )),
               SizedBox(height: 50.h),

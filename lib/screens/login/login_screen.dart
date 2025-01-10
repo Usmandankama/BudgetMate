@@ -44,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Text(
                   'Sign in or \ncreate an account',
                   style: TextStyle(
-                    color: AppColors.fontLight,
+                    color: AppColors.fontWhite,
                     fontFamily: 'Montserrat',
                     fontSize: 36.sp,
                   ),
@@ -81,7 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: TextStyle(
                           fontFamily: 'Montserrat',
                           fontSize: 13.sp,
-                          color: AppColors.fontLight,
+                          color: AppColors.fontWhite,
                         ),
                       ),
                       GestureDetector(
@@ -126,7 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     const Expanded(
                       child: Divider(
-                        color: AppColors.fontLight, // Line color
+                        color: AppColors.fontWhite, // Line color
                         thickness: 1, // Line thickness
                       ),
                     ),
@@ -135,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Text(
                       'or login with',
                       style: TextStyle(
-                        color: AppColors.fontLight,
+                        color: AppColors.fontWhite,
                         fontSize: 16.sp,
                         fontFamily: 'Montserrat',
                       ),
@@ -143,7 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(width: 10.w),
                     const Expanded(
                       child: Divider(
-                        color: AppColors.fontLight, // Line color
+                        color: AppColors.fontWhite, // Line color
                         thickness: 1, // Line thickness
                       ),
                     ),
@@ -199,7 +199,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: TextStyle(
                         fontFamily: 'Montserrat',
                         fontSize: 13.sp,
-                        color: AppColors.fontLight,
+                        color: AppColors.fontWhite,
                       ),
                     ),
                     GestureDetector(

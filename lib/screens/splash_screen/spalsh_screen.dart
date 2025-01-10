@@ -93,7 +93,7 @@ class _SplashScreenState extends State<SplashScreen>
                       AppColors.secondaryColor,
                     ),
                     foregroundColor: const WidgetStatePropertyAll(
-                      AppColors.fontLight,
+                      AppColors.fontWhite,
                     ),
                   ),
                   onPressed: () {
