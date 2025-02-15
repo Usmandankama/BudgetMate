@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:budget_mate/constatnts/colors.dart';
-import 'package:budget_mate/screens/login/login_screen.dart';
 import 'package:budget_mate/screens/splash_screen/spalsh_screen.dart';
 import 'package:flutter/material.dart';
 

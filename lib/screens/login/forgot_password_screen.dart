@@ -15,7 +15,7 @@ class forgotPasswordScreen extends StatefulWidget {
 }
 
 class _forgotPasswordScreenState extends State<forgotPasswordScreen> {
-  TextEditingController emailController = new TextEditingController();
+  TextEditingController emailController =  TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +25,7 @@ class _forgotPasswordScreenState extends State<forgotPasswordScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 'Reset password',
                 style: TextStyle(
                   color: AppColors.fontWhite,
