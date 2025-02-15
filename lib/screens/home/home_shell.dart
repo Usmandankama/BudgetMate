@@ -1,8 +1,9 @@
-import 'dart:async';
-
-import 'package:budget_mate/constatnts/colors.dart';
-import 'package:budget_mate/screens/splash_screen/spalsh_screen.dart';
+import 'package:budget_mate/screens/settings/settings_screen.dart';
 import 'package:flutter/material.dart';
+
+import '../../constatnts/colors.dart';
+import '../history/history_screen.dart';
+import 'home_screen.dart';
 
 class HomeShell extends StatefulWidget {
   const HomeShell({super.key});
@@ -12,21 +13,16 @@ class HomeShell extends StatefulWidget {
 }
 
 class _HomeShellState extends State<HomeShell> {
-  @override
-  void initState() {
-    super.initState();
-    startTimer();
-  }
+  int _selectedIndex = 0;
+  List<Widget> screens = [
+    const HomeScreen(),
+    const HistoryScreen(),
+    const SettingsScreen(),
+  ];
 
-  void startTimer() {
-    // Create a timer for 3 seconds
-    Timer(const Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const SplashScreen(),
-        ),
-      );
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
     });
   }
 
@@ -34,9 +30,37 @@ class _HomeShellState extends State<HomeShell> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
-      body: Center(
-        child: Image.asset('assets/images/icon.png'),
-      ),
+      body: screens.isNotEmpty
+          ? screens[_selectedIndex]
+          : const Center(child: CircularProgressIndicator()),
+      bottomNavigationBar: _buildBottomNavigationBar(),
+    );
+  }
+
+  Widget _buildBottomNavigationBar() {
+    return BottomNavigationBar(
+      currentIndex: _selectedIndex,
+      onTap: _onItemTapped,
+      // backgroundColor: AppColors.,
+      selectedItemColor: AppColors.primaryColor,
+      unselectedItemColor: Colors.grey,
+      showSelectedLabels: true,
+      showUnselectedLabels: true,
+      type: BottomNavigationBarType.fixed,
+      items: const [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.dashboard),
+          label: 'Dashboard',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.book),
+          label: 'Courses',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person),
+          label: 'Profile',
+        ),
+      ],
     );
   }
 }
