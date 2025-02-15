@@ -53,12 +53,12 @@ class _HomeShellState extends State<HomeShell> {
           label: 'Dashboard',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.book),
-          label: 'Courses',
+          icon: Icon(Icons.calendar_month_outlined),
+          label: 'Expenses',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.person),
-          label: 'Profile',
+          icon: Icon(Icons.settings),
+          label: 'Settings',
         ),
       ],
     );
