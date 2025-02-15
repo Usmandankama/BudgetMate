@@ -1,5 +1,6 @@
 import 'package:budget_mate/constatnts/colors.dart';
 import 'package:budget_mate/screens/home/components/analytics_text.dart';
+import 'package:budget_mate/screens/home/components/history_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -142,16 +143,24 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SizedBox(height: 10.h),
               Container(
-                height: 370.h,
                 decoration: BoxDecoration(
-                  color: AppColors.fontWhite,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20.r),
                     topRight: Radius.circular(20.r),
                   ),
+                  
                 ),
-              ),
-            ],
+                child: const Column(
+                  children: [
+                    HistoryCard(),
+                    HistoryCard(),
+                    HistoryCard(),
+                    HistoryCard(),
+                    HistoryCard(),
+                    HistoryCard(),
+                  ],
+                )
+              ),           ],
           ),
         ),
       ),
