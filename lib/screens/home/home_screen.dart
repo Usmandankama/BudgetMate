@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: AppColors.primaryColor,
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.only(top: 30.h),
+          padding: EdgeInsets.only(top: 50.h),
           child: Column(
             children: [
               Padding(
