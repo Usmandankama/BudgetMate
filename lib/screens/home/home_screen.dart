@@ -1,6 +1,6 @@
 import 'package:budget_mate/constatnts/colors.dart';
 import 'package:budget_mate/screens/home/components/analytics_text.dart';
-import 'package:budget_mate/screens/home/components/history_card.dart';
+import 'package:budget_mate/screens/history/components/history_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
