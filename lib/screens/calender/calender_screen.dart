@@ -37,19 +37,25 @@ class _CalendarScreenState extends State<CalendarScreen> {
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> expensesForDay =
         _expenses[_formatDate(_selectedDate)] ?? [];
-
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
       body: Column(
         children: [
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 20.h),
+          ),
           // Horizontal Calendar
           TableCalendar(
             currentDay: DateTime.now(),
             focusedDay: _selectedDate,
             firstDay: DateTime.utc(2024, 1, 1),
             lastDay: DateTime.utc(2030, 12, 31),
-            calendarFormat: CalendarFormat.week, // Keeps it horizontal
-            headerStyle: const HeaderStyle(
+            calendarFormat: CalendarFormat.week,
+            headerStyle: HeaderStyle(
+              titleTextStyle: TextStyle(
+                color: AppColors.fontWhite,
+                fontSize: 20.sp,
+              ),
               formatButtonVisible: false,
               titleCentered: true,
             ),
