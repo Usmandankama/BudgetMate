@@ -1,4 +1,5 @@
 import 'package:budget_mate/constatnts/colors.dart';
+import 'package:budget_mate/screens/settings/components/settings_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -25,11 +26,63 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
         ),
       ),
-      body: const SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 20.h),
+              Center(
+                child: Column(
+                  children: [
+                    CircleAvatar(
+                      backgroundImage:
+                          const AssetImage('assets/images/avatar.jpeg'),
+                      radius: 60.r,
+                    ),
+                    Text(
+                      'John Doe',
+                      style: TextStyle(
+                        fontSize: 24.sp,
+                        color: AppColors.fontWhite,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 10.h),
+              Text(
+                'Accounts',
+                style: TextStyle(
+                  fontSize: 18.sp,
+                  color: AppColors.fontLight,
+                ),
+              ),
+              SizedBox(height: 10.h),
+              const SettingsTile(),
+              SizedBox(height: 10.h),
+              const SettingsTile(),
+              SizedBox(height: 10.h),
+              Text(
+                'Prefrences',
+                style: TextStyle(
+                  fontSize: 18.sp,
+                  color: AppColors.fontLight,
+                ),
+              ),
+              SizedBox(height: 10.h),
+              const SettingsTile(),
+              SizedBox(height: 10.h),
+              const SettingsTile(),
+              SizedBox(height: 10.h),
+              const SettingsTile(),
+              SizedBox(height: 10.h),
+              const SettingsTile(),
+              SizedBox(height: 10.h),
+            ],
+          ),
         ),
       ),
     );
