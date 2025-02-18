@@ -6,3 +6,6 @@
 /android/.gradle
 /.dart_tool
 /android/.gradle
+lib/firebase_options.dart
+firebase.json
+android/app/google-services.json
