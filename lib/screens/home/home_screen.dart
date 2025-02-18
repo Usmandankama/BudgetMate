@@ -1,8 +1,10 @@
 import 'package:budget_mate/constatnts/colors.dart';
+import 'package:budget_mate/screens/expenses/expense_screen.dart';
 import 'package:budget_mate/screens/home/components/analytics_text.dart';
 import 'package:budget_mate/screens/history/components/history_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import 'components/action_button_container.dart';
 
@@ -42,10 +44,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             Text(
                               'John Doe',
                               style: TextStyle(
-                                fontFamily: 'Montserrat',
-                                fontSize: 20.sp,
-                                color: AppColors.fontWhite
-                              ),
+                                  fontFamily: 'Montserrat',
+                                  fontSize: 20.sp,
+                                  color: AppColors.fontWhite),
                             ),
                           ],
                         ),
@@ -99,7 +100,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     Row(
                       children: [
                         ActionButtonContainer(
-                          onpressed: () {},
+                          onpressed: () {
+                            Get.to(const ExpenseScreen());
+                          },
                           title: 'Add Expense',
                           icon: Icons.credit_card,
                         ),
@@ -143,24 +146,23 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SizedBox(height: 10.h),
               Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20.r),
-                    topRight: Radius.circular(20.r),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20.r),
+                      topRight: Radius.circular(20.r),
+                    ),
                   ),
-                  
-                ),
-                child: const Column(
-                  children: [
-                    HistoryCard(),
-                    HistoryCard(),
-                    HistoryCard(),
-                    HistoryCard(),
-                    HistoryCard(),
-                    HistoryCard(),
-                  ],
-                )
-              ),           ],
+                  child: const Column(
+                    children: [
+                      HistoryCard(),
+                      HistoryCard(),
+                      HistoryCard(),
+                      HistoryCard(),
+                      HistoryCard(),
+                      HistoryCard(),
+                    ],
+                  )),
+            ],
           ),
         ),
       ),
