@@ -1,4 +1,4 @@
-import 'package:budget_mate/constatnts/colors.dart';
+import 'package:budgetmate_2/constatnts/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:table_calendar/table_calendar.dart';

@@ -1,5 +1,5 @@
-import 'package:budget_mate/screens/calender/calender_screen.dart';
-import 'package:budget_mate/screens/settings/settings_screen.dart';
+import 'package:budgetmate_2/screens/calender/calender_screen.dart';
+import 'package:budgetmate_2/screens/settings/settings_screen.dart';
 import 'package:flutter/material.dart';
 import '../../constatnts/colors.dart';
 import 'home_screen.dart';

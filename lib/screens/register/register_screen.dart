@@ -1,7 +1,8 @@
-import 'package:budget_mate/constatnts/colors.dart';
-import 'package:budget_mate/screens/components/actionButton.dart';
-import 'package:budget_mate/screens/components/text_field.dart';
-import 'package:budget_mate/screens/login/login_screen.dart';
+import 'package:budgetmate_2/constatnts/colors.dart';
+import 'package:budgetmate_2/screens/components/actionButton.dart';
+import '../expenses/text_field.dart';
+
+import 'package:budgetmate_2/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

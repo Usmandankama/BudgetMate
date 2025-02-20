@@ -1,5 +1,5 @@
-import 'package:budget_mate/constatnts/colors.dart';
-import 'package:budget_mate/screens/settings/components/settings_tile.dart';
+import 'package:budgetmate_2/constatnts/colors.dart';
+import 'package:budgetmate_2/screens/settings/components/settings_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

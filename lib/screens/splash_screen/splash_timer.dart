@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:budget_mate/constatnts/colors.dart';
-import 'package:budget_mate/screens/splash_screen/spalsh_screen.dart';
+import 'package:budgetmate_2/constatnts/colors.dart';
+import 'package:budgetmate_2/screens/splash_screen/spalsh_screen.dart';
 import 'package:flutter/material.dart';
 
 class SplashTimer extends StatefulWidget {

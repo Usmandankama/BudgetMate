@@ -1,8 +1,7 @@
-import 'package:budget_mate/screens/login/login_screen.dart';
-import 'package:budget_mate/screens/splash_screen/components/splash_item.dart';
+import 'package:budgetmate_2/screens/login/login_screen.dart';
+import 'package:budgetmate_2/screens/splash_screen/components/splash_item.dart';
 import 'package:flutter/material.dart';
-import 'package:budget_mate/constatnts/colors.dart';
-import 'package:flutter/widgets.dart';
+import 'package:budgetmate_2/constatnts/colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -61,10 +60,11 @@ class _SplashScreenState extends State<SplashScreen>
                       "Whether you're saving for a vacation or building an emergency fund, we've got you covered.",
                 ),
                 SplashItem(
-                    imagePath: 'assets/images/investing.png',
-                    title: 'Invest for the Future',
-                    subtitle:
-                        'Turn your savings into investments. BudgetMate helps you learn the basics of investing, manage your portfolio, and grow your wealth over time.'),
+                  imagePath: 'assets/images/investing.png',
+                  title: 'Invest for the Future',
+                  subtitle:
+                      'Turn your savings into investments. BudgetMate helps you learn the basics of investing, manage your portfolio, and grow your wealth over time.',
+                ),
               ],
             ),
           ),
@@ -85,27 +85,27 @@ class _SplashScreenState extends State<SplashScreen>
           SizedBox(height: 10.h),
           currentindex == 2
               ? ElevatedButton(
-                  style: ButtonStyle(
-                    padding: WidgetStatePropertyAll(
-                      EdgeInsets.symmetric(horizontal: 100.w, vertical: 20.h),
-                    ),
-                    backgroundColor: const WidgetStatePropertyAll(
-                      AppColors.secondaryColor,
-                    ),
-                    foregroundColor: const WidgetStatePropertyAll(
-                      AppColors.fontWhite,
-                    ),
+                style: ButtonStyle(
+                  padding: WidgetStatePropertyAll(
+                    EdgeInsets.symmetric(horizontal: 100.w, vertical: 20.h),
                   ),
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const LoginScreen(),
-                      ),
-                    );
-                  },
-                  child: const Text('Get Started'),
-                )
+                  backgroundColor: const WidgetStatePropertyAll(
+                    AppColors.secondaryColor,
+                  ),
+                  foregroundColor: const WidgetStatePropertyAll(
+                    AppColors.fontWhite,
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LoginScreen(),
+                    ),
+                  );
+                },
+                child: const Text('Get Started'),
+              )
               : SizedBox(height: 50.h),
         ],
       ),

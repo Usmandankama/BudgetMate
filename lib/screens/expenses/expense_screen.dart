@@ -1,4 +1,4 @@
-import 'package:budget_mate/constatnts/colors.dart';
+import 'package:budgetmate_2/constatnts/colors.dart';
 import 'package:flutter/material.dart';
 
 class ExpenseScreen extends StatefulWidget {

@@ -1,7 +1,7 @@
-import 'package:budget_mate/constatnts/colors.dart';
-import 'package:budget_mate/screens/expenses/expense_screen.dart';
-import 'package:budget_mate/screens/home/components/analytics_text.dart';
-import 'package:budget_mate/screens/history/components/history_card.dart';
+import 'package:budgetmate_2/constatnts/colors.dart';
+import 'package:budgetmate_2/screens/expenses/expense_screen.dart';
+import 'package:budgetmate_2/screens/home/components/analytics_text.dart';
+import 'package:budgetmate_2/screens/history/components/history_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
