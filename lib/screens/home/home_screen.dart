@@ -101,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         ActionButtonContainer(
                           onpressed: () {
-                            Get.to(const ExpenseScreen());
+                            Get.toNamed('/expenses');
                           },
                           title: 'Add Expense',
                           icon: Icons.credit_card,
