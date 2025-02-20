@@ -6,7 +6,7 @@ import 'package:budgetmate_2/screens/register/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../expenses/text_field.dart';
+import '../components/text_field.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
