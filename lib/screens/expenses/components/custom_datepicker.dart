@@ -51,7 +51,7 @@ class CustomDatepicker extends StatelessWidget {
             children: [
               Text(
                 DateFormat.yMMMd().format(selectedDate.value),
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500,color: AppColors.fontWhite),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w300,color: AppColors.fontWhite),
               ),
               Icon(
                 Icons.calendar_today_rounded,
