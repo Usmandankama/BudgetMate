@@ -1,5 +1,8 @@
+import 'package:budgetmate_2/controllers/auth_controller.dart';
+import 'package:budgetmate_2/controllers/user_controller.dart';
 import 'package:budgetmate_2/screens/expenses/expense_screen.dart';
 import 'package:budgetmate_2/screens/home/home_screen.dart';
+import 'package:budgetmate_2/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -9,6 +12,8 @@ import 'screens/splash_screen/splash_timer.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
+  Get.put(UserController());
+  Get.put(AuthController());
   runApp(const MyApp());
 }
 
@@ -26,6 +31,7 @@ class MyApp extends StatelessWidget {
           getPages: [
             GetPage(name: "/", page: () => HomeScreen()),
             GetPage(name: "/expenses", page: () => ExpenseScreen()),
+            GetPage(name: "/login", page: () => LoginScreen()),
           ],
           debugShowCheckedModeBanner: false,
           home: SplashTimer(),
