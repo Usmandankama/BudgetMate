@@ -64,7 +64,7 @@ class CustomDropdown extends StatelessWidget {
               color: AppColors.secondaryColor,
             ),
             isExpanded: true,
-            dropdownColor: Colors.white,
+            dropdownColor: AppColors.accentColor,
             borderRadius: BorderRadius.circular(12),
             style: TextStyle(color: AppColors.fontWhite, fontSize: 16),
             onChanged: (value) {

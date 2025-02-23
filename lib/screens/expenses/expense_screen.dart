@@ -17,6 +17,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(
           'Add expense',
@@ -40,9 +41,14 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
             CustomDropdown(),
             SizedBox(height: 20.h),
             TextField(
+              cursorColor: AppColors.fontWhite,
+              style: TextStyle(
+                color: AppColors.fontWhite,
+                fontFamily: 'Montserrat',
+              ),
               decoration: InputDecoration(
-                fillColor: AppColors.fontWhite,
                 labelText: 'Name',
+                focusColor: AppColors.fontWhite,
                 labelStyle: TextStyle(
                   color: AppColors.fontWhite,
                   fontFamily: 'Montserrat',
@@ -57,7 +63,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
             TextField(
               decoration: InputDecoration(
                 fillColor: AppColors.fontWhite,
-                labelText: '\$ Amount',
+                labelText: 'Amount',
                 labelStyle: TextStyle(
                   color: AppColors.fontWhite,
                   fontFamily: 'Montserrat',
