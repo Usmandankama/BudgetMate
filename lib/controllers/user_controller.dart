@@ -1,46 +1,38 @@
-import 'package:budgetmate_2/controllers/auth_controller.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class UserController extends GetxController {
-  // Observable user data
-  var username = ''.obs;
-  var email = ''.obs;
-  var password = ''.obs;
-  // var profilePic = ''.obs;
-  // var userId = ''.obs;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final GetStorage _storage = GetStorage();
+
+  RxMap userData = {}.obs;
 
   @override
-  void onInit() {
-    super.onInit();
-    loadUserData(); // Load data from GetStorage
+  void onReady() {
+    super.onReady();
+    getUserData();
   }
 
-  // Load user data from GetStorage
-  void loadUserData() {
-    username.value = AuthController().box.read('username') ?? '';
-    email.value = AuthController().box.read('email') ?? '';
-    // profilePic.value = _storage.read('profilePic') ?? '';
-    // userId.value = _storage.read('userId') ?? '';
+  Future<void> getUserData() async {
+    try {
+      User? user = _auth.currentUser;
+      if (user != null) {
+        DocumentSnapshot userDoc = await _firestore.collection('users').doc(user.uid).get();
+        userData.value = userDoc.data() as Map<String, dynamic>;
+
+        // Store in local storage
+        _storage.write("userData", userData);
+      }
+    } catch (e) {
+      Get.snackbar("Error", "Failed to fetch user data");
+    }
   }
 
-  // Update user data in GetStorage
-  void updateUserData(String name, String mail, String pic) {
-    username.value = name;
-    email.value = mail;
-    // profilePic.value = pic;
-
-    AuthController().box.write('username', name);
-    AuthController().box.write('email', mail);
-    AuthController().box.write('profilePic', pic);
-  }
-
-  // Logout and clear stored data
-  void logout() {
-    AuthController().box.erase;
-    username.value = '';
-    email.value = '';
-    // profilePic.value = '';
-    // userId.value = '';
-    Get.offAllNamed('/login'); // Redirect to login
+  void clearUserData() {
+    userData.value = {};
+    _storage.remove("userData");
   }
 }
