@@ -24,11 +24,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
       TextEditingController();
 
   void registerUser() {
-    authController.register(
-      emailController.text.trim(),
-      passwordController.text.trim(),
-      confirmPasswordController.text.trim(),
-      usernameController.text.trim(),
+    authController.registerUser(
+      name: usernameController.text.trim(),
+      email: emailController.text.trim(),
+      password: passwordController.text.trim(),
     );
   }
 

@@ -1,10 +1,12 @@
 import 'package:budgetmate_2/constatnts/colors.dart';
+import 'package:budgetmate_2/controllers/auth_controller.dart';
 import 'package:budgetmate_2/screens/components/actionButton.dart';
 import 'package:budgetmate_2/screens/home/home_shell.dart';
 import 'package:budgetmate_2/screens/login/forgot_password_screen.dart';
 import 'package:budgetmate_2/screens/register/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 import '../components/text_field.dart';
@@ -18,8 +20,11 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final box = GetStorage();
+  final AuthController authController = Get.put(AuthController());
+
   late TextEditingController emailController;
   late TextEditingController passwordController;
+  RxBool isLoading = false.obs; // Show loading indicator
 
   @override
   void initState() {
@@ -30,13 +35,26 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void signIn() {
-    box.write('email', emailController.text);
-    box.write('password', passwordController.text);
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => const HomeShell()),
-    );
+  Future<void> login() async {
+    if (emailController.text.isEmpty || passwordController.text.isEmpty) {
+      Get.snackbar("Error", "Email and password cannot be empty",
+          snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.red, colorText: Colors.white);
+      return;
+    }
+
+    isLoading.value = true;
+    try {
+      await authController.loginUser(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+      Get.offAll(() => const HomeShell()); // Navigate to home on success
+    } catch (e) {
+      Get.snackbar("Login Failed", e.toString(),
+          snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.red, colorText: Colors.white);
+    } finally {
+      isLoading.value = false;
+    }
   }
 
   @override
@@ -97,7 +115,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 SizedBox(height: 30.h),
-                ActionButton(title: 'Sign in', onPressed: signIn),
+                
+                Obx(() => isLoading.value
+                    ? CircularProgressIndicator(color: AppColors.secondaryColor)
+                    : ActionButton(title: 'Sign in', onPressed: login)),
+                
                 SizedBox(height: 50.h),
                 Divider(color: AppColors.fontWhite, thickness: 1),
                 SizedBox(height: 10.h),
@@ -121,7 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         borderRadius: BorderRadius.circular(16.r),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {}, // Google login function (if needed)
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
