@@ -1,69 +1,55 @@
-import 'package:budgetmate_2/screens/login/login_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
 class AuthController extends GetxController {
-  final box = GetStorage();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  var isLoggedIn = false.obs;
-  var email = ''.obs;
+  Rx<User?> firebaseUser = Rx<User?>(null);
 
   @override
-  void onInit() {
-    super.onInit();
-    checkLoginStatus();
+  void onReady() {
+    super.onReady();
+    firebaseUser.bindStream(_auth.authStateChanges());
   }
 
-  // Register a new user
-  void register(String email, String password, String confirmPassword, String username) {
-    if (password != confirmPassword) {
-      Get.snackbar("Error", "Passwords do not match!");
-      return;
-    }
+  Future<void> registerUser({
+    required String name,
+    required String email,
+    required String password,
+  }) async {
+    try {
+      UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
 
-    if (box.hasData(email)) {
-      Get.snackbar("Error", "User already exists!");
-      return;
-    }
-
-    box.write(email, password);
-    box.write('username', username);
-    Get.snackbar("Success", "User registered successfully!");
-    Get.toNamed('/login');
-  }
-
-  // Login user
-  void login(String email, String password) {
-    String? storedPassword = box.read(email);
-
-    if (storedPassword == null) {
-      Get.snackbar("Error", "User not found!");
-    } else if (storedPassword == password) {
-      box.write('logged_in_user', email);
-      isLoggedIn.value = true;
-      this.email.value = email;
-      Get.snackbar("Success", "Login successful!");
-    } else {
-      Get.snackbar("Error", "Incorrect password!");
+      User? user = userCredential.user;
+      if (user != null) {
+        await _firestore.collection('users').doc(user.uid).set({
+          'uid': user.uid,
+          'name': name,
+          'email': email,
+          'createdAt': FieldValue.serverTimestamp(),
+        });
+        Get.snackbar("Success", "Account created successfully");
+      }
+    } catch (e) {
+      Get.snackbar("Error", e.toString());
     }
   }
 
-
-
-  // Logout user
-  void logout() {
-    box.remove('logged_in_user');
-    isLoggedIn.value = false;
-    email.value = '';
-    Get.snackbar("Success", "Logged out!");
+  Future<void> loginUser({required String email, required String password}) async {
+    try {
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
+      Get.snackbar("Success", "Logged in successfully");
+    } catch (e) {
+      Get.snackbar("Error", e.toString());
+    }
   }
 
-  // Check if user is logged in
-  void checkLoginStatus() {
-    String? storedUser = box.read('logged_in_user');
-    if (storedUser != null) {
-      isLoggedIn.value = true;
-      email.value = storedUser;
-    }
+  Future<void> logout() async {
+    await _auth.signOut();
   }
 }
