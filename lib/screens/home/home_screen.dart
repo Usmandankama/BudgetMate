@@ -44,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             SizedBox(width: 10.w),
                             Text(
-                              userController.username.value,
+                              'John Smith',
                               style: TextStyle(
                                 fontFamily: 'Montserrat',
                                 fontSize: 20.sp,
@@ -102,7 +102,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         SizedBox(width: 5.w),
                         ActionButtonContainer(
-                          onpressed: () {},
+                          onpressed: () {
+                            Get.toNamed('/income');
+                          },
                           title: 'Add Income',
                           icon: Icons.add_card,
                         ),

@@ -1,10 +1,9 @@
 import 'package:budgetmate_2/constatnts/colors.dart';
 import 'package:budgetmate_2/screens/components/actionButton.dart';
-import 'package:budgetmate_2/screens/expenses/components/custom_datepicker.dart';
-import 'package:budgetmate_2/screens/expenses/components/custom_dropdown.dart';
+import 'package:budgetmate_2/screens/components/custom_datepicker.dart';
+import 'package:budgetmate_2/screens/components/custom_dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 
 class ExpenseScreen extends StatefulWidget {
   const ExpenseScreen({super.key});
