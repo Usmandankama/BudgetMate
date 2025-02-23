@@ -1,11 +1,11 @@
 import 'package:budgetmate_2/constatnts/colors.dart';
-import 'package:budgetmate_2/screens/expenses/expense_screen.dart';
 import 'package:budgetmate_2/screens/home/components/analytics_text.dart';
 import 'package:budgetmate_2/screens/history/components/history_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../controllers/user_controller.dart';
 import 'components/action_button_container.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,6 +16,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final UserController userController = Get.find<UserController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,16 +38,18 @@ class _HomeScreenState extends State<HomeScreen> {
                         Row(
                           children: [
                             const CircleAvatar(
-                              backgroundImage:
-                                  AssetImage('assets/images/avatar.jpeg'),
+                              backgroundImage: AssetImage(
+                                'assets/images/avatar.jpeg',
+                              ),
                             ),
                             SizedBox(width: 10.w),
                             Text(
-                              'John Doe',
+                              userController.username.value,
                               style: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  fontSize: 20.sp,
-                                  color: AppColors.fontWhite),
+                                fontFamily: 'Montserrat',
+                                fontSize: 20.sp,
+                                color: AppColors.fontWhite,
+                              ),
                             ),
                           ],
                         ),
@@ -82,18 +85,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        AnalyticsText(
-                          titleText: 'Total Spent',
-                          amount: 1000,
-                        ),
-                        AnalyticsText(
-                          titleText: 'Total Income',
-                          amount: 2000,
-                        ),
-                        AnalyticsText(
-                          titleText: 'Goal',
-                          amount: 15000,
-                        ),
+                        AnalyticsText(titleText: 'Total Spent', amount: 1000),
+                        AnalyticsText(titleText: 'Total Income', amount: 2000),
+                        AnalyticsText(titleText: 'Goal', amount: 15000),
                       ],
                     ),
                     SizedBox(height: 30.h),
@@ -116,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         CircleAvatar(
                           radius: 30.r,
                           child: const Icon(Icons.more_horiz_rounded),
-                        )
+                        ),
                       ],
                     ),
                     SizedBox(height: 30.h),
@@ -138,7 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             fontSize: 18.sp,
                             color: AppColors.fontLight,
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ],
@@ -146,22 +140,23 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SizedBox(height: 10.h),
               Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20.r),
-                      topRight: Radius.circular(20.r),
-                    ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20.r),
+                    topRight: Radius.circular(20.r),
                   ),
-                  child: const Column(
-                    children: [
-                      HistoryCard(),
-                      HistoryCard(),
-                      HistoryCard(),
-                      HistoryCard(),
-                      HistoryCard(),
-                      HistoryCard(),
-                    ],
-                  )),
+                ),
+                child: const Column(
+                  children: [
+                    HistoryCard(),
+                    HistoryCard(),
+                    HistoryCard(),
+                    HistoryCard(),
+                    HistoryCard(),
+                    HistoryCard(),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
