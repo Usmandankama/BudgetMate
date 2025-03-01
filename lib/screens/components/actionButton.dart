@@ -22,7 +22,7 @@ class ActionButton extends StatelessWidget {
       ),
       onPressed: onPressed,
       child: SizedBox(
-        width: 200.w,
+        width: 180.w,
         height: 60.h,
         child: Center(
           child: Text(
