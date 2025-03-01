@@ -45,7 +45,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
-                const SizedBox(height: 80),
+                SizedBox(height: 140.h),
                 Text(
                   'Sign in or \ncreate an account',
                   style: TextStyle(
@@ -53,6 +53,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     fontFamily: 'Montserrat',
                     fontSize: 36.sp,
                   ),
+                  textAlign: TextAlign.center,
                 ),
                 SizedBox(height: 50.h),
                 Center(

@@ -69,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
             padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
-                const SizedBox(height: 80),
+                const SizedBox(height: 140),
                 Text(
                   'Sign in or \ncreate an account',
                   style: TextStyle(
@@ -121,20 +121,17 @@ class _LoginScreenState extends State<LoginScreen> {
                     : ActionButton(title: 'Sign in', onPressed: login)),
                 
                 SizedBox(height: 50.h),
-                Divider(color: AppColors.fontWhite, thickness: 1),
-                SizedBox(height: 10.h),
                 Text(
                   'or login with',
                   style: TextStyle(
                     color: AppColors.fontWhite,
-                    fontSize: 16.sp,
+                    fontSize: 17.sp,
                     fontFamily: 'Montserrat',
                   ),
                 ),
-                SizedBox(height: 10.h),
-                Divider(color: AppColors.fontWhite, thickness: 1),
                 SizedBox(height: 30.h),
                 SizedBox(
+                  height: 50.h,
                   width: 300.w,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
