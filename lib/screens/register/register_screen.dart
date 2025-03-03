@@ -1,5 +1,4 @@
 import 'package:budgetmate_2/constatnts/colors.dart';
-import 'package:budgetmate_2/screens/components/actionButton.dart';
 import '../components/text_field.dart';
 import 'package:budgetmate_2/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
@@ -23,12 +22,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController confirmPasswordController =
       TextEditingController();
 
-  void registerUser() {
-    authController.registerUser(
+  bool isLoading = false; // Add loading state
+
+  void registerUser() async {
+    setState(() {
+      isLoading = true; // Start loading
+    });
+
+    await authController.registerUser(
       name: usernameController.text.trim(),
       email: emailController.text.trim(),
       password: passwordController.text.trim(),
     );
+
+    setState(() {
+      isLoading = false; // Stop loading after function completes
+    });
   }
 
   @override
@@ -102,7 +111,35 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
                 SizedBox(height: 30.h),
-                ActionButton(title: 'Register', onPressed: registerUser),
+                
+                // Button with loading state
+                SizedBox(
+                  width: 250.w,
+                  height: 50.h,
+                  child: ElevatedButton(
+                    onPressed: isLoading ? null : registerUser,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.secondaryColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    child: isLoading
+                        ? CircularProgressIndicator(
+                            valueColor:
+                                AlwaysStoppedAnimation<Color>(Colors.white),
+                          )
+                        : Text(
+                            'Register',
+                            style: TextStyle(
+                              fontFamily: 'Montserrat',
+                              fontSize: 18.sp,
+                              color: Colors.white,
+                            ),
+                          ),
+                  ),
+                ),
+
                 SizedBox(height: 30.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

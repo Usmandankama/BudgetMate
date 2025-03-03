@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             SizedBox(width: 10.w),
                             Text(
                               'John Smith',
-                              style: TextStyle(
+                              style: TextStyle( 
                                 fontFamily: 'Montserrat',
                                 fontSize: 20.sp,
                                 color: AppColors.fontWhite,
