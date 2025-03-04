@@ -1,9 +1,11 @@
-import 'package:budgetmate_2/constatnts/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:budgetmate_2/constatnts/colors.dart';
 
 class CustomDropdown extends StatelessWidget {
-  const CustomDropdown({super.key});
+  final Function(String) onCategorySelected; // Callback function
+
+  const CustomDropdown({super.key, required this.onCategorySelected});
 
   @override
   Widget build(BuildContext context) {
@@ -69,23 +71,23 @@ class CustomDropdown extends StatelessWidget {
             style: TextStyle(color: AppColors.fontWhite, fontSize: 16),
             onChanged: (value) {
               selectedCategory.value = value!;
+              onCategorySelected(value); // Call the callback function
             },
-            items:
-                categories.map((category) {
-                  return DropdownMenuItem(
-                    value: category,
-                    child: Row(
-                      children: [
-                        Icon(
-                          _getCategoryIcon(category),
-                          color: AppColors.secondaryColor,
-                        ),
-                        SizedBox(width: 10),
-                        Text(category),
-                      ],
+            items: categories.map((category) {
+              return DropdownMenuItem(
+                value: category,
+                child: Row(
+                  children: [
+                    Icon(
+                      _getCategoryIcon(category),
+                      color: AppColors.secondaryColor,
                     ),
-                  );
-                }).toList(),
+                    SizedBox(width: 10),
+                    Text(category),
+                  ],
+                ),
+              );
+            }).toList(),
           ),
         ),
       ),
