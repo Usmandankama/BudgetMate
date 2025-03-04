@@ -140,7 +140,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         borderRadius: BorderRadius.circular(16.r),
                       ),
                     ),
-                    onPressed: () {}, // Google login function (if needed)
+                    onPressed: () {
+                      authController.signInWithGoogle();
+                    }, // Google login function (if needed)
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
