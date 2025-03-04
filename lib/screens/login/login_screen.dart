@@ -116,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 SizedBox(height: 30.h),
                 
-                Obx(() => isLoading.value
+                Obx(() => isLoading.value 
                     ? CircularProgressIndicator(color: AppColors.secondaryColor)
                     : ActionButton(title: 'Sign in', onPressed: login)),
                 

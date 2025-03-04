@@ -4,9 +4,11 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class CustomDatepicker extends StatelessWidget {
-  CustomDatepicker({super.key});
+  final Function(DateTime) onDateSelected;
+  CustomDatepicker({super.key, required this.onDateSelected});
 
   final Rx<DateTime> selectedDate = DateTime.now().obs;
+
   @override
   Widget build(BuildContext context) {
     return Obx(
@@ -35,8 +37,9 @@ class CustomDatepicker extends StatelessWidget {
             },
           );
 
-          if (pickedDate != null && pickedDate != selectedDate.value) {
+          if (pickedDate != null) {
             selectedDate.value = pickedDate;
+            onDateSelected(pickedDate); // Notify parent widget
           }
         },
         child: Container(
@@ -51,7 +54,7 @@ class CustomDatepicker extends StatelessWidget {
             children: [
               Text(
                 DateFormat.yMMMd().format(selectedDate.value),
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w300,color: AppColors.fontWhite),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w300, color: AppColors.fontWhite),
               ),
               Icon(
                 Icons.calendar_today_rounded,
