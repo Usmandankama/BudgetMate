@@ -24,6 +24,8 @@ class _IncomeScreenState extends State<IncomeScreen> {
   final TextEditingController categoryController = TextEditingController();
   final TextEditingController amountController = TextEditingController();
   final TextEditingController decriptionController = TextEditingController();
+  DateTime selectedDate = DateTime.now(); // Store selected date
+
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +57,15 @@ class _IncomeScreenState extends State<IncomeScreen> {
             SizedBox(height: 20.h),
             CustomTxtfield2(name: 'Amount', controller: amountController),
             SizedBox(height: 20.h),
-            CustomDatepicker(),
+            CustomDatepicker(
+              onDateSelected: (DateTime selectedDate) {
+                setState(() {
+                  this.selectedDate =
+                      selectedDate; // Update the selected date in the parent widget
+                });
+              },
+            ),
+
             SizedBox(height: 20.h),
             CustomTxtfield2(
               name: 'Description',
