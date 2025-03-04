@@ -152,6 +152,48 @@
       "languageVersion": "2.16"
     },
     {
+      "name": "google_identity_services_web",
+      "rootUri": "file:///C:/Users/USMAN/AppData/Local/Pub/Cache/hosted/pub.dev/google_identity_services_web-0.3.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "google_sign_in",
+      "rootUri": "file:///C:/Users/USMAN/AppData/Local/Pub/Cache/hosted/pub.dev/google_sign_in-6.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "google_sign_in_android",
+      "rootUri": "file:///C:/Users/USMAN/AppData/Local/Pub/Cache/hosted/pub.dev/google_sign_in_android-6.1.31",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "google_sign_in_ios",
+      "rootUri": "file:///C:/Users/USMAN/AppData/Local/Pub/Cache/hosted/pub.dev/google_sign_in_ios-5.8.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "google_sign_in_platform_interface",
+      "rootUri": "file:///C:/Users/USMAN/AppData/Local/Pub/Cache/hosted/pub.dev/google_sign_in_platform_interface-2.5.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "google_sign_in_web",
+      "rootUri": "file:///C:/Users/USMAN/AppData/Local/Pub/Cache/hosted/pub.dev/google_sign_in_web-0.12.4+3",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "http",
+      "rootUri": "file:///C:/Users/USMAN/AppData/Local/Pub/Cache/hosted/pub.dev/http-1.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
       "name": "http_parser",
       "rootUri": "file:///C:/Users/USMAN/AppData/Local/Pub/Cache/hosted/pub.dev/http_parser-4.1.2",
       "packageUri": "lib/",
@@ -356,7 +398,7 @@
       "languageVersion": "3.7"
     }
   ],
-  "generated": "2025-03-03T08:15:35.717323Z",
+  "generated": "2025-03-04T06:00:54.226166Z",
   "generator": "pub",
   "generatorVersion": "3.7.0",
   "flutterRoot": "file:///C:/Users/USMAN/Downloads/Setups/flutter_windows_3.22.2-stable/flutter",
