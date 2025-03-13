@@ -96,7 +96,6 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
               },
             ),
             SizedBox(height: 100.h),
-
             ActionButton(title: 'Add expense', onPressed: addExpense),
             ElevatedButton(
               onPressed: isLoading ? null : addExpense,

@@ -1,6 +1,8 @@
 import 'package:budgetmate_2/constatnts/colors.dart';
+import 'package:budgetmate_2/controllers/expense_controller.dart';
 import 'package:budgetmate_2/screens/home/components/analytics_text.dart';
 import 'package:budgetmate_2/screens/history/components/history_card.dart';
+import 'package:budgetmate_2/screens/home/components/expense_listview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -17,6 +19,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final UserController userController = Get.find<UserController>();
+  final ExpenseController expenseController = Get.find<ExpenseController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             SizedBox(width: 10.w),
                             Text(
                               'John Smith',
-                              style: TextStyle( 
+                              style: TextStyle(
                                 fontFamily: 'Montserrat',
                                 fontSize: 20.sp,
                                 color: AppColors.fontWhite,
@@ -81,11 +84,16 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     SizedBox(height: 50.h),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        AnalyticsText(titleText: 'Total Spent', amount: 1000),
+                        Obx(
+                          () => AnalyticsText(
+                            titleText: 'Total Spent',
+                            amount: expenseController.totalAmountSpent.round(),
+                          ),
+                        ),
                         AnalyticsText(titleText: 'Total Income', amount: 2000),
                         AnalyticsText(titleText: 'Goal', amount: 15000),
                       ],
@@ -140,25 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
-              SizedBox(height: 10.h),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20.r),
-                    topRight: Radius.circular(20.r),
-                  ),
-                ),
-                child: const Column(
-                  children: [
-                    HistoryCard(),
-                    HistoryCard(),
-                    HistoryCard(),
-                    HistoryCard(),
-                    HistoryCard(),
-                    HistoryCard(),
-                  ],
-                ),
-              ),
+              ExpenseListView(),
             ],
           ),
         ),
