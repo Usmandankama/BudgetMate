@@ -26,7 +26,7 @@ class AnalyticsText extends StatelessWidget {
           "\$$amount",
           style: TextStyle(
             fontFamily: 'Montserrat',
-            fontSize: 14.sp,
+            fontSize: 20.sp,
             fontWeight: FontWeight.bold,
             color: AppColors.fontWhite,
           ),
