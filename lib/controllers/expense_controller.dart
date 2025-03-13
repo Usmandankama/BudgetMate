@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ExpenseController extends GetxController {
@@ -20,6 +21,7 @@ class ExpenseController extends GetxController {
     required String date,
     required String description,
     required String category,
+    required IconData? iconPath,
   }) async {
     try {
       await _firestore.collection('expenses').add({
@@ -28,6 +30,7 @@ class ExpenseController extends GetxController {
         'date': date,
         'description': description,
         'category': category,
+        'iconPath': iconPath?.codePoint.toString(),
         'createdAt': FieldValue.serverTimestamp(),
       });
 
@@ -42,17 +45,27 @@ class ExpenseController extends GetxController {
   Future<void> fetchExpenses() async {
     try {
       isLoading(true); // Start loading
-      var snapshot = await _firestore
-          .collection('expenses')
-          .orderBy('createdAt', descending: true)
-          .get();
+      var snapshot =
+          await _firestore
+              .collection('expenses')
+              .orderBy('createdAt', descending: true)
+              .get();
 
-      expenses.value = snapshot.docs.map((doc) {
-        var data = doc.data();
-        data['id'] = doc.id; // Add document ID
-        return data;
-      }).toList();
+      expenses.value =
+          snapshot.docs.map((doc) {
+            var data = doc.data();
+            data['id'] = doc.id; // Add document ID
 
+            if (data['iconPath'] != null) {
+              data['icon'] = IconData(
+                int.parse(data['iconPath']),
+                fontFamily: 'MaterialIcons',
+              );
+            } else {
+              data['icon'] = Icons.category; // Default icon
+            }
+            return data;
+          }).toList();
     } catch (e) {
       Get.snackbar("Error", "Failed to fetch expenses: $e");
     } finally {

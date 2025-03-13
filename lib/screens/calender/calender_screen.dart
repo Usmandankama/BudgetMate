@@ -106,7 +106,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                   return HistoryCard(
                     name: expense["name"],
                     amount: expense["amount"],
-                    icon: Icons.category, // Change to a dynamic icon if needed
+                    icon: expense["icon"], // Change to a dynamic icon if needed
                   );
                 },
               );

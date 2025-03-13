@@ -111,7 +111,7 @@
     },
     {
       "name": "flutter",
-      "rootUri": "file:///C:/Users/USMAN/Downloads/Setups/flutter_windows_3.22.2-stable/flutter/packages/flutter",
+      "rootUri": "file:///C:/Users/USMAN/flutter/packages/flutter",
       "packageUri": "lib/",
       "languageVersion": "3.7"
     },
@@ -129,13 +129,13 @@
     },
     {
       "name": "flutter_test",
-      "rootUri": "file:///C:/Users/USMAN/Downloads/Setups/flutter_windows_3.22.2-stable/flutter/packages/flutter_test",
+      "rootUri": "file:///C:/Users/USMAN/flutter/packages/flutter_test",
       "packageUri": "lib/",
       "languageVersion": "3.7"
     },
     {
       "name": "flutter_web_plugins",
-      "rootUri": "file:///C:/Users/USMAN/Downloads/Setups/flutter_windows_3.22.2-stable/flutter/packages/flutter_web_plugins",
+      "rootUri": "file:///C:/Users/USMAN/flutter/packages/flutter_web_plugins",
       "packageUri": "lib/",
       "languageVersion": "3.7"
     },
@@ -309,7 +309,7 @@
     },
     {
       "name": "sky_engine",
-      "rootUri": "file:///C:/Users/USMAN/Downloads/Setups/flutter_windows_3.22.2-stable/flutter/bin/cache/pkg/sky_engine",
+      "rootUri": "file:///C:/Users/USMAN/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
       "languageVersion": "3.7"
     },
@@ -398,10 +398,10 @@
       "languageVersion": "3.7"
     }
   ],
-  "generated": "2025-03-04T06:00:54.226166Z",
+  "generated": "2025-03-13T13:07:22.389097Z",
   "generator": "pub",
   "generatorVersion": "3.7.0",
-  "flutterRoot": "file:///C:/Users/USMAN/Downloads/Setups/flutter_windows_3.22.2-stable/flutter",
-  "flutterVersion": "3.22.2",
+  "flutterRoot": "file:///C:/Users/USMAN/flutter",
+  "flutterVersion": "3.29.1",
   "pubCache": "file:///C:/Users/USMAN/AppData/Local/Pub/Cache"
 }
