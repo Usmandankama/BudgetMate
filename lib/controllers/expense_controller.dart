@@ -45,31 +45,34 @@ class ExpenseController extends GetxController {
   Future<void> fetchExpenses() async {
     try {
       isLoading(true); // Start loading
-      var snapshot =
-          await _firestore
-              .collection('expenses')
-              .orderBy('createdAt', descending: true)
-              .get();
+      var snapshot = await _firestore
+          .collection('expenses')
+          .orderBy('createdAt', descending: true)
+          .get();
 
-      expenses.value =
-          snapshot.docs.map((doc) {
-            var data = doc.data();
-            data['id'] = doc.id; // Add document ID
+      expenses.value = snapshot.docs.map((doc) {
+        var data = doc.data();
+        data['id'] = doc.id; // Add document ID
 
-            if (data['iconPath'] != null) {
-              data['icon'] = IconData(
-                int.parse(data['iconPath']),
-                fontFamily: 'MaterialIcons',
-              );
-            } else {
-              data['icon'] = Icons.category; // Default icon
-            }
-            return data;
-          }).toList();
+        if (data['iconPath'] != null) {
+          data['icon'] = IconData(
+            int.parse(data['iconPath']),
+            fontFamily: 'MaterialIcons',
+          );
+        } else {
+          data['icon'] = Icons.category; // Default icon
+        }
+        return data;
+      }).toList();
     } catch (e) {
       Get.snackbar("Error", "Failed to fetch expenses: $e");
     } finally {
       isLoading(false); // Stop loading
     }
+  }
+
+  /// Get Total Amount Spent
+  double get totalAmountSpent {
+    return expenses.fold(0.0, (total, expense) => total + (expense['amount'] ?? 0.0));
   }
 }
