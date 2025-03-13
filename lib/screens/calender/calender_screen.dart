@@ -1,5 +1,6 @@
 import 'package:budgetmate_2/constatnts/colors.dart';
 import 'package:budgetmate_2/controllers/expense_controller.dart';
+import 'package:budgetmate_2/controllers/income_controller.dart'; // Import Income Controller
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -14,10 +15,10 @@ class CalendarScreen extends StatefulWidget {
 
 class _CalendarScreenState extends State<CalendarScreen> {
   final ExpenseController expenseController = Get.put(ExpenseController());
+  final IncomeController incomeController = Get.put(IncomeController()); // Initialize Income Controller
 
   DateTime _selectedDate = DateTime.now();
 
-  // Function to format the DateTime into "yyyy-MM-dd"
   String _formatDate(DateTime date) {
     return "${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}";
   }
@@ -25,7 +26,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
   @override
   void initState() {
     super.initState();
-    expenseController.fetchExpenses(); // Fetch expenses when screen loads
+    expenseController.fetchExpenses();
+    incomeController.fetchIncome(); // Fetch incomes
   }
 
   @override
@@ -35,7 +37,6 @@ class _CalendarScreenState extends State<CalendarScreen> {
       body: Column(
         children: [
           Padding(padding: EdgeInsets.symmetric(vertical: 20.h)),
-          // Horizontal Calendar
           TableCalendar(
             currentDay: DateTime.now(),
             focusedDay: _selectedDate,
@@ -43,10 +44,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
             lastDay: DateTime.utc(2030, 12, 31),
             calendarFormat: CalendarFormat.week,
             headerStyle: HeaderStyle(
-              titleTextStyle: TextStyle(
-                color: AppColors.fontWhite,
-                fontSize: 20.sp,
-              ),
+              titleTextStyle: TextStyle(color: AppColors.fontWhite, fontSize: 20.sp),
               formatButtonVisible: false,
               titleCentered: true,
             ),
@@ -59,13 +57,12 @@ class _CalendarScreenState extends State<CalendarScreen> {
             },
           ),
           const SizedBox(height: 10),
-          // Expenses Title
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 5.h),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                "Expenses on ${_formatDate(_selectedDate)}",
+                "Transactions on ${_formatDate(_selectedDate)}",
                 style: const TextStyle(
                   fontSize: 18,
                   fontFamily: 'Poppins',
@@ -75,40 +72,44 @@ class _CalendarScreenState extends State<CalendarScreen> {
               ),
             ),
           ),
-          // Expenses List (Positioned at Bottom)
           Expanded(
             child: Obx(() {
-              if (expenseController.isLoading.value) {
+              if (expenseController.isLoading.value || incomeController.isLoading.value) {
                 return const Center(child: CircularProgressIndicator());
               }
 
-              List<Map<String, dynamic>> expensesForDay =
-                  expenseController.expenses
-                      .where(
-                        (expense) =>
-                            expense['date'] == _formatDate(_selectedDate),
-                      )
-                      .toList();
+              List<Map<String, dynamic>> expensesForDay = expenseController.expenses
+                  .where((expense) => expense['date'] == _formatDate(_selectedDate))
+                  .toList();
 
-              if (expensesForDay.isEmpty) {
+              List<Map<String, dynamic>> incomesForDay = incomeController.incomeList
+                  .where((income) => income['date'] == _formatDate(_selectedDate))
+                  .toList();
+
+              if (expensesForDay.isEmpty && incomesForDay.isEmpty) {
                 return const Center(
                   child: Text(
-                    "No expenses recorded for this day.",
+                    "No transactions recorded for this day.",
                     style: TextStyle(color: Colors.white70, fontSize: 16),
                   ),
                 );
               }
 
-              return ListView.builder(
-                itemCount: expensesForDay.length,
-                itemBuilder: (context, index) {
-                  final expense = expensesForDay[index];
-                  return HistoryCard(
-                    name: expense["name"],
-                    amount: expense["amount"],
-                    icon: expense["icon"], // Change to a dynamic icon if needed
-                  );
-                },
+              return ListView(
+                children: [
+                  ...expensesForDay.map((expense) => HistoryCard(
+                        name: expense["name"],
+                        amount: expense["amount"],
+                        icon: expense["icon"],
+                        isExpense: true, // Mark as expense
+                      )),
+                  ...incomesForDay.map((income) => HistoryCard(
+                        name: income["name"],
+                        amount: income["amount"],
+                        icon: income["icon"],
+                        isExpense: false, // Mark as income
+                      )),
+                ],
               );
             }),
           ),
@@ -118,17 +119,19 @@ class _CalendarScreenState extends State<CalendarScreen> {
   }
 }
 
-// Expense History Card Component
+// Expense & Income History Card
 class HistoryCard extends StatelessWidget {
   final String name;
   final double amount;
   final IconData icon;
+  final bool isExpense; // Identify if it's an expense or income
 
   const HistoryCard({
     super.key,
     required this.name,
     required this.amount,
     required this.icon,
+    required this.isExpense,
   });
 
   @override
@@ -164,12 +167,12 @@ class HistoryCard extends StatelessWidget {
                 ],
               ),
               Text(
-                '\$${amount.toStringAsFixed(2)}',
-                style: const TextStyle(
+                '${isExpense ? '-' : '+'} \$${amount.toStringAsFixed(2)}',
+                style: TextStyle(
                   fontSize: 16,
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.w700,
-                  color: AppColors.fontWhite,
+                  color: isExpense ? Colors.red : Colors.green, // Red for expenses, green for incomes
                 ),
               ),
             ],
