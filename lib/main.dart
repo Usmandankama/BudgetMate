@@ -2,7 +2,7 @@ import 'package:budgetmate_2/controllers/auth_controller.dart';
 import 'package:budgetmate_2/controllers/user_controller.dart';
 import 'package:budgetmate_2/screens/expenses/expense_screen.dart';
 import 'package:budgetmate_2/screens/home/home_screen.dart';
-import 'package:budgetmate_2/screens/income/inocme_screen.dart';
+import 'package:budgetmate_2/screens/income/income_screen.dart';
 import 'package:budgetmate_2/screens/login/login_screen.dart';
 import 'package:budgetmate_2/screens/register/register_screen.dart';
 import 'package:firebase_core/firebase_core.dart' show Firebase;
