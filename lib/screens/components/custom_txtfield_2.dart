@@ -10,20 +10,20 @@ class CustomTxtfield2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      controller: controller,
-      cursorColor: AppColors.fontWhite,
-      style: TextStyle(color: AppColors.fontWhite, fontFamily: 'Montserrat'),
-      decoration: InputDecoration(
-        labelText: name,
-        focusColor: AppColors.fontWhite,
-        labelStyle: TextStyle(
-          color: AppColors.fontWhite,
-          fontFamily: 'Montserrat',
-        ),
-        border: OutlineInputBorder(
-          borderSide: const BorderSide(color: AppColors.fontLight),
-          borderRadius: BorderRadius.circular(16.0.r),
+    return Container(
+      height: 60.h,
+      padding: EdgeInsets.only(left: 10.0, top: 8),
+      decoration: BoxDecoration(
+        border: Border.all(color: AppColors.fontLight, width: 2.0),
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      child: TextField(
+        style: TextStyle(color: AppColors.fontWhite),
+        controller: controller,
+        decoration: InputDecoration(
+          hintText: name,
+          hintStyle: TextStyle(color: AppColors.fontLight),
+          border: InputBorder.none,
         ),
       ),
     );
