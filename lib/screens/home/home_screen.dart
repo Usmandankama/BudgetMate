@@ -1,5 +1,6 @@
 import 'package:budgetmate_2/constatnts/colors.dart';
 import 'package:budgetmate_2/controllers/expense_controller.dart';
+import 'package:budgetmate_2/controllers/income_controller.dart';
 import 'package:budgetmate_2/screens/home/components/analytics_text.dart';
 import 'package:budgetmate_2/screens/history/components/history_card.dart';
 import 'package:budgetmate_2/screens/home/components/expense_listview.dart';
@@ -20,6 +21,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final UserController userController = Get.find<UserController>();
   final ExpenseController expenseController = Get.find<ExpenseController>();
+  final IncomeController incomeController = Get.find<IncomeController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,7 +96,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             amount: expenseController.totalAmountSpent.round(),
                           ),
                         ),
-                        AnalyticsText(titleText: 'Total Income', amount: 2000),
+                        Obx(
+                          () => AnalyticsText(
+                            titleText: 'Total Income',
+                            amount: incomeController.totalIncome.round(),
+                          ),
+                        ),
                         AnalyticsText(titleText: 'Goal', amount: 15000),
                       ],
                     ),
