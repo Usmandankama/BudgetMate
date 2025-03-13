@@ -3,7 +3,7 @@ import 'package:budgetmate_2/controllers/expense_controller.dart';
 import 'package:budgetmate_2/screens/components/actionButton.dart';
 import 'package:budgetmate_2/screens/components/custom_datepicker.dart';
 import 'package:budgetmate_2/screens/components/custom_dropdown.dart';
-import 'package:budgetmate_2/screens/expenses/components/expense_textfield.dart';
+import 'package:budgetmate_2/screens/components/custom_txtfield_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -79,13 +79,13 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
               },
             ),
             SizedBox(height: 20.h),
-            ExpenseTextfield(controller: nameController, title: 'Name'),
+            CustomTxtfield2(controller: nameController, name: 'Name'),
             SizedBox(height: 30.h),
-            ExpenseTextfield(controller: amountController, title: 'Amount'),
+            CustomTxtfield2(controller: amountController, name: 'Amount'),
             SizedBox(height: 30.h),
-            ExpenseTextfield(
+            CustomTxtfield2(
               controller: descriptionController,
-              title: 'Description',
+              name: 'Description',
             ),
             SizedBox(height: 30.h),
             CustomDatepicker(
