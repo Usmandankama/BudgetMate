@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SettingsTile extends StatelessWidget {
-  const SettingsTile({super.key});
+  final String text;
+  final IconData icon;
+  const SettingsTile({super.key, required this.text, required this.icon});
+  
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +27,7 @@ class SettingsTile extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  'Manage',
+                  text,
                   style: TextStyle(
                     fontSize: 15.sp,
                     fontFamily: 'Poppins',
@@ -33,8 +36,8 @@ class SettingsTile extends StatelessWidget {
                 ),
               ],
             ),
-            const Icon(
-              Icons.keyboard_arrow_right_rounded,
+            Icon(
+              icon,
               color: AppColors.fontWhite,
               size: 30,
             ),

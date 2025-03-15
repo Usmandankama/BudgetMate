@@ -20,10 +20,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         backgroundColor: AppColors.primaryColor,
         title: Text(
           'Settings',
-          style: TextStyle(
-            fontSize: 24.sp,
-            color: AppColors.fontWhite,
-          ),
+          style: TextStyle(fontSize: 24.sp, color: AppColors.fontWhite),
         ),
       ),
       body: SingleChildScrollView(
@@ -38,8 +35,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 child: Column(
                   children: [
                     CircleAvatar(
-                      backgroundImage:
-                          const AssetImage('assets/images/avatar.jpeg'),
+                      backgroundImage: const AssetImage(
+                        'assets/images/avatar.jpeg',
+                      ),
                       radius: 60.r,
                     ),
                     Text(
@@ -55,31 +53,30 @@ class _SettingsScreenState extends State<SettingsScreen> {
               SizedBox(height: 10.h),
               Text(
                 'Accounts',
-                style: TextStyle(
-                  fontSize: 18.sp,
-                  color: AppColors.fontLight,
-                ),
+                style: TextStyle(fontSize: 18.sp, color: AppColors.fontLight),
               ),
               SizedBox(height: 10.h),
-              const SettingsTile(),
+              const SettingsTile(text: 'Accounts', icon: Icons.person),
               SizedBox(height: 10.h),
-              const SettingsTile(),
+              const SettingsTile(text: 'Accounts', icon: Icons.person),
+
               SizedBox(height: 10.h),
               Text(
                 'Prefrences',
-                style: TextStyle(
-                  fontSize: 18.sp,
-                  color: AppColors.fontLight,
-                ),
+                style: TextStyle(fontSize: 18.sp, color: AppColors.fontLight),
               ),
               SizedBox(height: 10.h),
-              const SettingsTile(),
+              const SettingsTile(text: 'Accounts', icon: Icons.person),
+
               SizedBox(height: 10.h),
-              const SettingsTile(),
+              const SettingsTile(text: 'Accounts', icon: Icons.person),
+
               SizedBox(height: 10.h),
-              const SettingsTile(),
+              const SettingsTile(text: 'Accounts', icon: Icons.person),
+
               SizedBox(height: 10.h),
-              const SettingsTile(),
+              const SettingsTile(text: 'Accounts', icon: Icons.person),
+
               SizedBox(height: 10.h),
             ],
           ),
