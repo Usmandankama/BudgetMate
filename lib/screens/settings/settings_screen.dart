@@ -27,10 +27,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 20.h),
+              // User Profile
               Center(
                 child: Column(
                   children: [
@@ -40,44 +40,125 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ),
                       radius: 60.r,
                     ),
+                    SizedBox(height: 8.h),
                     Text(
                       'John Doe',
                       style: TextStyle(
                         fontSize: 24.sp,
+                        fontWeight: FontWeight.bold,
                         color: AppColors.fontWhite,
+                      ),
+                    ),
+                    Text(
+                      'johndoe@example.com',
+                      style: TextStyle(
+                        fontSize: 14.sp,
+                        color: AppColors.fontLight,
                       ),
                     ),
                   ],
                 ),
               ),
-              SizedBox(height: 10.h),
+              SizedBox(height: 20.h),
+
+              // Account Section
               Text(
-                'Accounts',
-                style: TextStyle(fontSize: 18.sp, color: AppColors.fontLight),
+                'Account',
+                style: TextStyle(
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.fontLight,
+                ),
               ),
               SizedBox(height: 10.h),
-              const SettingsTile(text: 'Accounts'),
+              SettingsTile(icon: Icons.person, text: 'Edit Profile'),
               SizedBox(height: 10.h),
-              const SettingsTile(text: 'Accounts'),
 
+              SettingsTile(icon: Icons.email, text: 'Change Email'),
               SizedBox(height: 10.h),
+
+              SettingsTile(icon: Icons.lock, text: 'Change Password'),
+
+              SizedBox(height: 20.h),
+
+              // Preferences Section
               Text(
-                'Prefrences',
-                style: TextStyle(fontSize: 18.sp, color: AppColors.fontLight),
+                'Preferences',
+                style: TextStyle(
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.fontLight,
+                ),
               ),
               SizedBox(height: 10.h),
-              const SettingsTile(text: 'Accounts'),
-
+              SettingsTile(icon: Icons.notifications, text: 'Notifications'),
               SizedBox(height: 10.h),
-              const SettingsTile(text: 'Accounts'),
 
+              SettingsTile(icon: Icons.color_lens, text: 'Theme & Appearance'),
               SizedBox(height: 10.h),
-              const SettingsTile(text: 'Accounts'),
 
-              SizedBox(height: 10.h),
-              const SettingsTile(text: 'Accounts'),
+              SettingsTile(icon: Icons.language, text: 'Language'),
 
+              SizedBox(height: 20.h),
+
+              // Security Section
+              Text(
+                'Security',
+                style: TextStyle(
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.fontLight,
+                ),
+              ),
               SizedBox(height: 10.h),
+              SettingsTile(
+                icon: Icons.fingerprint,
+                text: 'Enable Biometric Login',
+              ),
+              SizedBox(height: 10.h),
+
+              SettingsTile(
+                icon: Icons.security,
+                text: 'Two-Factor Authentication',
+              ),
+
+              SizedBox(height: 20.h),
+
+              // App Info
+              Text(
+                'App Info',
+                style: TextStyle(
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.fontLight,
+                ),
+              ),
+              SizedBox(height: 10.h),
+              SettingsTile(icon: Icons.info, text: 'About BudgetMate'),
+              SizedBox(height: 10.h),
+
+              SettingsTile(icon: Icons.privacy_tip, text: 'Privacy Policy'),
+              SizedBox(height: 10.h),
+
+              SettingsTile(icon: Icons.article, text: 'Terms & Conditions'),
+
+              SizedBox(height: 20.h),
+
+              // Logout
+              Center(
+                child: TextButton.icon(
+                  onPressed: () {
+                    // Add logout function
+                  },
+                  icon: Icon(Icons.logout, color: Colors.red),
+                  label: Text(
+                    "Logout",
+                    style: TextStyle(fontSize: 16.sp, color: Colors.red),
+                  ),
+                ),
+              ),
+
+              SizedBox(height: 20.h),
             ],
           ),
         ),
