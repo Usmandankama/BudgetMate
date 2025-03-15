@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class IncomeController extends GetxController {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   var incomeList = <Map<String, dynamic>>[].obs; // Observable list of incomes
   var isLoading = false.obs; // Loading state
@@ -24,7 +26,10 @@ class IncomeController extends GetxController {
     required IconData? iconPath, // Icon support
   }) async {
     try {
-      await _firestore.collection('income').add({
+      String? userId = _auth.currentUser?.uid; // Get current user ID
+      if (userId == null) throw "User not logged in";
+
+      await _firestore.collection('users').doc(userId).collection('income').add({
         'name': name,
         'amount': amount,
         'date': date,
@@ -41,11 +46,16 @@ class IncomeController extends GetxController {
     }
   }
 
-  /// Fetch Income Function
+  /// Fetch Income Function (User-specific)
   Future<void> fetchIncome() async {
     try {
       isLoading(true); // Start loading
+      String? userId = _auth.currentUser?.uid;
+      if (userId == null) throw "User not logged in";
+
       var snapshot = await _firestore
+          .collection('users')
+          .doc(userId)
           .collection('income')
           .orderBy('createdAt', descending: true)
           .get();
@@ -71,7 +81,7 @@ class IncomeController extends GetxController {
     }
   }
 
-  /// Get Total Income
+  /// Get Total Income (User-specific)
   double get totalIncome {
     return incomeList.fold(0.0, (total, income) => total + (income['amount'] ?? 0.0));
   }
