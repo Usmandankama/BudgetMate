@@ -27,7 +27,7 @@ class ActionButtonContainer extends StatelessWidget {
           children: [
             SizedBox(width: 5.w),
             CircleAvatar(
-              child: Icon(icon, color: AppColors.fontBlack),
+              child: Icon(icon, color: AppColors.primaryColor),
             ),
             SizedBox(width: 5.w),
             Text(

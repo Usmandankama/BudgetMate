@@ -126,7 +126,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         SizedBox(width: 5.w),
                         CircleAvatar(
                           radius: 30.r,
-                          child: const Icon(Icons.more_horiz_rounded),
+                          child: const Icon(
+                            Icons.camera_alt,
+                            color: AppColors.primaryColor,
+                          ),
                         ),
                       ],
                     ),
