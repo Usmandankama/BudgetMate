@@ -56,9 +56,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 style: TextStyle(fontSize: 18.sp, color: AppColors.fontLight),
               ),
               SizedBox(height: 10.h),
-              const SettingsTile(text: 'Accounts', icon: Icons.person),
+              const SettingsTile(text: 'Accounts'),
               SizedBox(height: 10.h),
-              const SettingsTile(text: 'Accounts', icon: Icons.person),
+              const SettingsTile(text: 'Accounts'),
 
               SizedBox(height: 10.h),
               Text(
@@ -66,16 +66,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 style: TextStyle(fontSize: 18.sp, color: AppColors.fontLight),
               ),
               SizedBox(height: 10.h),
-              const SettingsTile(text: 'Accounts', icon: Icons.person),
+              const SettingsTile(text: 'Accounts'),
 
               SizedBox(height: 10.h),
-              const SettingsTile(text: 'Accounts', icon: Icons.person),
+              const SettingsTile(text: 'Accounts'),
 
               SizedBox(height: 10.h),
-              const SettingsTile(text: 'Accounts', icon: Icons.person),
+              const SettingsTile(text: 'Accounts'),
 
               SizedBox(height: 10.h),
-              const SettingsTile(text: 'Accounts', icon: Icons.person),
+              const SettingsTile(text: 'Accounts'),
 
               SizedBox(height: 10.h),
             ],

@@ -4,8 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SettingsTile extends StatelessWidget {
   final String text;
-  final IconData icon;
-  const SettingsTile({super.key, required this.text, required this.icon});
+  const SettingsTile({super.key, required this.text});
   
 
   @override
@@ -36,8 +35,8 @@ class SettingsTile extends StatelessWidget {
                 ),
               ],
             ),
-            Icon(
-              icon,
+            const Icon(
+              Icons.keyboard_arrow_right_rounded,
               color: AppColors.fontWhite,
               size: 30,
             ),
