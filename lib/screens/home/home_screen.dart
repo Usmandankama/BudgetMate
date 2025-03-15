@@ -3,7 +3,7 @@ import 'package:budgetmate_2/controllers/expense_controller.dart';
 import 'package:budgetmate_2/controllers/income_controller.dart';
 import 'package:budgetmate_2/screens/home/components/analytics_text.dart';
 import 'package:budgetmate_2/screens/history/components/history_card.dart';
-import 'package:budgetmate_2/screens/home/components/expense_listview.dart';
+import 'package:budgetmate_2/screens/home/components/transaction_listview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -155,7 +155,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
-              ExpenseListView(),
+              TransactionListView(),
             ],
           ),
         ),
