@@ -13,6 +13,8 @@ class HomeShell extends StatefulWidget {
 
 class _HomeShellState extends State<HomeShell> {
   int _selectedIndex = 0;
+  final PageController _pageController = PageController();
+
   List<Widget> screens = [
     const HomeScreen(),
     const CalendarScreen(),
@@ -20,6 +22,14 @@ class _HomeShellState extends State<HomeShell> {
   ];
 
   void _onItemTapped(int index) {
+    _pageController.animateToPage(
+      index,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
+  }
+
+  void _onPageChanged(int index) {
     setState(() {
       _selectedIndex = index;
     });
@@ -29,9 +39,12 @@ class _HomeShellState extends State<HomeShell> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
-      body: screens.isNotEmpty
-          ? screens[_selectedIndex]
-          : const Center(child: CircularProgressIndicator()),
+      body: PageView(
+        controller: _pageController,
+        onPageChanged: _onPageChanged,
+        children: screens,
+        physics: const BouncingScrollPhysics(), // Adds a smooth effect
+      ),
       bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }
