@@ -72,47 +72,104 @@ class _CalendarScreenState extends State<CalendarScreen> {
               ),
             ),
           ),
-          Expanded(
-            child: Obx(() {
-              if (expenseController.isLoading.value || incomeController.isLoading.value) {
-                return const Center(child: CircularProgressIndicator());
-              }
+Expanded(
+  child: Obx(() {
+    if (expenseController.isLoading.value || incomeController.isLoading.value) {
+      return const Center(child: CircularProgressIndicator());
+    }
 
-              List<Map<String, dynamic>> expensesForDay = expenseController.expenses
-                  .where((expense) => expense['date'] == _formatDate(_selectedDate))
-                  .toList();
+    // Filter expenses and incomes for the selected date
+    List<Map<String, dynamic>> expensesForDay = expenseController.expenses
+        .where((expense) => expense['date'] == _formatDate(_selectedDate))
+        .toList();
 
-              List<Map<String, dynamic>> incomesForDay = incomeController.incomeList
-                  .where((income) => income['date'] == _formatDate(_selectedDate))
-                  .toList();
+    List<Map<String, dynamic>> incomesForDay = incomeController.incomeList
+        .where((income) => income['date'] == _formatDate(_selectedDate))
+        .toList();
 
-              if (expensesForDay.isEmpty && incomesForDay.isEmpty) {
-                return const Center(
-                  child: Text(
-                    "No transactions recorded for this day.",
-                    style: TextStyle(color: Colors.white70, fontSize: 16),
-                  ),
-                );
-              }
+    // Calculate totals
+    double totalExpenses = expensesForDay.fold(0, (sum, expense) => sum + (expense['amount'] as num));
+    double totalIncome = incomesForDay.fold(0, (sum, income) => sum + (income['amount'] as num));
 
-              return ListView(
-                children: [
-                  ...expensesForDay.map((expense) => HistoryCard(
-                        name: expense["name"],
-                        amount: expense["amount"],
-                        icon: expense["icon"],
-                        isExpense: true, // Mark as expense
-                      )),
-                  ...incomesForDay.map((income) => HistoryCard(
-                        name: income["name"],
-                        amount: income["amount"],
-                        icon: income["icon"],
-                        isExpense: false, // Mark as income
-                      )),
-                ],
-              );
-            }),
+    double totalBalance = totalIncome - totalExpenses;
+
+    if (expensesForDay.isEmpty && incomesForDay.isEmpty) {
+      return const Center(
+        child: Text(
+          "No transactions recorded for this day.",
+          style: TextStyle(color: Colors.white70, fontSize: 16),
+        ),
+      );
+    }
+
+    return Column(
+      children: [
+        // Total transactions summary
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
+          child: Container(
+            padding: EdgeInsets.all(15.w),
+            decoration: BoxDecoration(
+              color: AppColors.accentColor,
+              borderRadius: BorderRadius.circular(20.r),
+            ),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Total Income:", style: TextStyle(color: Colors.green, fontSize: 16.sp, fontWeight: FontWeight.bold)),
+                    Text("+\$${totalIncome.toStringAsFixed(2)}", style: TextStyle(color: Colors.green, fontSize: 16.sp)),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Total Expenses:", style: TextStyle(color: Colors.red, fontSize: 16.sp, fontWeight: FontWeight.bold)),
+                    Text("-\$${totalExpenses.toStringAsFixed(2)}", style: TextStyle(color: Colors.red, fontSize: 16.sp)),
+                  ],
+                ),
+                Divider(color: Colors.white54),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Net Balance:", style: TextStyle(color: Colors.white, fontSize: 18.sp, fontWeight: FontWeight.bold)),
+                    Text(
+                      "\$${totalBalance.toStringAsFixed(2)}",
+                      style: TextStyle(
+                        color: totalBalance >= 0 ? Colors.green : Colors.red,
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
+        ),
+        Expanded(
+          child: ListView(
+            children: [
+              ...expensesForDay.map((expense) => HistoryCard(
+                    name: expense["name"],
+                    amount: expense["amount"],
+                    icon: expense["icon"],
+                    isExpense: true, // Mark as expense
+                  )),
+              ...incomesForDay.map((income) => HistoryCard(
+                    name: income["name"],
+                    amount: income["amount"],
+                    icon: income["icon"],
+                    isExpense: false, // Mark as income
+                  )),
+            ],
+          ),
+        ),
+      ],
+    );
+  }),
+),
         ],
       ),
     );
