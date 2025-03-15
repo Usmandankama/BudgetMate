@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 class AuthController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
 
   Rx<User?> firebaseUser = Rx<User?>(null);
 
@@ -53,24 +54,26 @@ class AuthController extends GetxController {
 
   Future<UserCredential?> signInWithGoogle() async {
     try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      if (googleUser == null) return null; // User canceled the sign-in
+      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+      if (googleUser == null) return null; // User canceled sign-in
 
       final GoogleSignInAuthentication googleAuth =
           await googleUser.authentication;
+
       final OAuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
 
-      return await FirebaseAuth.instance.signInWithCredential(credential);
+      return await _auth.signInWithCredential(credential);
     } catch (e) {
       print("Google Sign-In Error: $e");
       return null;
     }
   }
 
-  Future<void> logout() async {
+  Future<void> signOut() async {
+    await _googleSignIn.signOut();
     await _auth.signOut();
   }
 }
