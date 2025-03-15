@@ -24,7 +24,7 @@ class SettingsTile extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  'Manage accounts',
+                  'Manage',
                   style: TextStyle(
                     fontSize: 15.sp,
                     fontFamily: 'Poppins',
