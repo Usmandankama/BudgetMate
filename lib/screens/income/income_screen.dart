@@ -7,6 +7,7 @@ import 'package:budgetmate_2/screens/income/components/income_dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class IncomeScreen extends StatefulWidget {
   const IncomeScreen({super.key});
@@ -42,7 +43,7 @@ class _IncomeScreenState extends State<IncomeScreen> {
     incomeController.addIncome(
       name: namecontroller.text.trim(),
       amount: amount,
-      date: selectedDate.toIso8601String(),
+      date: DateFormat('yyyy-MM-dd').format(selectedDate),
       description: decriptionController.text.trim(),
       category: selectedCategory,
       iconPath: selectedCategoryIcon, // Default icon, replace if necessary
