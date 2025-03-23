@@ -1,7 +1,7 @@
 import 'package:budgetmate_2/constatnts/colors.dart';
 import 'package:budgetmate_2/controllers/expense_controller.dart';
 import 'package:budgetmate_2/controllers/income_controller.dart';
-import 'package:budgetmate_2/screens/RecieptScanner/recipt_scanner.dart';
+import 'package:budgetmate_2/screens/RecieptScanner/receipt_scanner.dart';
 import 'package:budgetmate_2/screens/home/components/analytics_text.dart';
 import 'package:budgetmate_2/screens/history/components/history_card.dart';
 import 'package:budgetmate_2/screens/home/components/transaction_listview.dart';
