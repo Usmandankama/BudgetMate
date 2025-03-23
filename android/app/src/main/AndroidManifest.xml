@@ -1,4 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <application
         android:label="budgetmate_2"
         android:name="${applicationName}"
@@ -32,7 +34,7 @@
             android:value="2" />
         <meta-data
             android:name="com.google.android.gms.auth.api.signin"
-            android:value="@string/1052797599381-ed471s56cgqr72ti7vng7upmosr2uqpk.apps.googleusercontent.com" />
+            android:value="@string/default_web_client_id" />
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and
