@@ -1,7 +1,9 @@
 import 'package:budgetmate_2/constatnts/colors.dart';
+import 'package:budgetmate_2/controllers/auth_controller.dart';
 import 'package:budgetmate_2/screens/settings/components/settings_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -11,6 +13,8 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
+  final AuthController authController = Get.put(AuthController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -148,7 +152,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               Center(
                 child: TextButton.icon(
                   onPressed: () {
-                    // Add logout function
+                    authController.signOut();
                   },
                   icon: Icon(Icons.logout, color: Colors.red),
                   label: Text(
