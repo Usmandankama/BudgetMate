@@ -1,3 +1,4 @@
+import 'package:budgetmate_2/constatnts/colors.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -33,7 +34,11 @@ class AuthController extends GetxController {
           'email': email,
           'createdAt': FieldValue.serverTimestamp(),
         });
+
         Get.snackbar("Success", "Account created successfully");
+
+        // Navigate to the login page
+        Get.offAllNamed('/login');
       }
     } catch (e) {
       Get.snackbar("Error", e.toString());
@@ -73,7 +78,17 @@ class AuthController extends GetxController {
   }
 
   Future<void> signOut() async {
-    await _googleSignIn.signOut();
-    await _auth.signOut();
+    Get.defaultDialog(
+      title: "Confirm Sign Out",
+      middleText: "Are you sure you want to sign out?",
+      textConfirm: "Yes",
+      textCancel: "No",
+      confirmTextColor: AppColors.fontWhite,
+      onConfirm: () async {
+        await _googleSignIn.signOut();
+        await _auth.signOut();
+        Get.offAllNamed('/login'); // Navigate to login page
+      },
+    );
   }
 }
