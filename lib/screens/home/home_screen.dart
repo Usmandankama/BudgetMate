@@ -20,9 +20,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final UserController userController = Get.find<UserController>();
   final ExpenseController expenseController = Get.find<ExpenseController>();
   final IncomeController incomeController = Get.find<IncomeController>();
+  final UserController userController = Get.put(UserController());
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,12 +51,15 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             ),
                             SizedBox(width: 10.w),
-                            Text(
-                              'John Smith',
-                              style: TextStyle(
-                                fontFamily: 'Montserrat',
-                                fontSize: 20.sp,
-                                color: AppColors.fontWhite,
+                            Obx(
+                              ()=>
+                              Text(
+                                userController.userName.value,
+                                style: TextStyle(
+                                  fontFamily: 'Montserrat',
+                                  fontSize: 20.sp,
+                                  color: AppColors.fontWhite,
+                                ),
                               ),
                             ),
                           ],
