@@ -6,23 +6,32 @@ class UserController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  RxMap userData = {}.obs;
+  RxString userName = "".obs;
 
   @override
   void onReady() {
     super.onReady();
-    getUserData();
+    getUserName();
   }
 
-  Future<void> getUserData() async {
+  Future<void> getUserName() async {
     try {
       User? user = _auth.currentUser;
-      if (user != null) {
-        DocumentSnapshot userDoc = await _firestore.collection('users').doc(user.uid).get();
-        userData.value = userDoc.data() as Map<String, dynamic>;
+      if (user == null) {
+        Get.snackbar("Error", "No user is logged in");
+        return;
       }
+      DocumentSnapshot userDoc =
+          await _firestore.collection('users').doc(user.uid).get();
+      if (!userDoc.exists || userDoc.data() == null) {
+        Get.snackbar("Error", "User document not found.");
+        return;
+      }
+      String fetchedName =
+          (userDoc.data() as Map<String, dynamic>)['name'] ?? "Unknown";
+      userName.value = fetchedName;
     } catch (e) {
-      Get.snackbar("Error", "Failed to fetch user data");
+      Get.snackbar("Error", "Failed to fetch user name");
     }
   }
 }
