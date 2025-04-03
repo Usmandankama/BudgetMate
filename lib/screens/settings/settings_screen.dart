@@ -41,9 +41,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
               Center(
                 child: Column(
                   children: [
-                    CircleAvatar(
-                      backgroundImage: const AssetImage(
-                        'assets/images/avatar.jpeg',
+                  CircleAvatar(
+                    backgroundImage: const AssetImage(
+                      'assets/images/avatar.jpeg',
                       ),
                       radius: 60.r,
                     ),
