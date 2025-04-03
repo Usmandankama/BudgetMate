@@ -5,8 +5,14 @@ import '../../constatnts/colors.dart';
 
 class CustomTxtfield2 extends StatelessWidget {
   final String name;
+  final IconData icon;
   final TextEditingController controller;
-  const CustomTxtfield2({super.key, required this.name, required this.controller});
+  const CustomTxtfield2({
+    super.key,
+    required this.name,
+    required this.controller,
+    required this.icon,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +27,7 @@ class CustomTxtfield2 extends StatelessWidget {
         style: TextStyle(color: AppColors.fontWhite),
         controller: controller,
         decoration: InputDecoration(
+          suffixIcon: Icon(icon, color: AppColors.secondaryColor),
           hintText: name,
           hintStyle: TextStyle(color: AppColors.fontLight),
           border: InputBorder.none,
