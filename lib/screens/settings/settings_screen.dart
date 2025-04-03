@@ -1,5 +1,7 @@
 import 'package:budgetmate_2/constatnts/colors.dart';
 import 'package:budgetmate_2/controllers/auth_controller.dart';
+import 'package:budgetmate_2/controllers/user_controller.dart';
+import 'package:budgetmate_2/screens/profile/edit_profile.dart';
 import 'package:budgetmate_2/screens/settings/components/settings_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,6 +16,7 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   final AuthController authController = Get.put(AuthController());
+  final UserController userController = Get.put(UserController());
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +49,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ),
                     SizedBox(height: 8.h),
                     Text(
-                      'John Doe',
+                      userController.userName.value,
                       style: TextStyle(
                         fontSize: 24.sp,
                         fontWeight: FontWeight.bold,
@@ -54,7 +57,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ),
                     ),
                     Text(
-                      'johndoe@example.com',
+                      userController.email.value,
                       style: TextStyle(
                         fontSize: 14.sp,
                         color: AppColors.fontLight,
@@ -75,13 +78,32 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
               ),
               SizedBox(height: 10.h),
-              SettingsTile(icon: Icons.person, text: 'Edit Profile'),
+              SettingsTile(
+                icon: Icons.person,
+                text: 'Edit Profile',
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => EditProfileScreen(),
+                    ),
+                  );
+                },
+              ),
               SizedBox(height: 10.h),
 
-              SettingsTile(icon: Icons.email, text: 'Change Email'),
+              SettingsTile(
+                icon: Icons.email,
+                text: 'Change Email',
+                onPressed: () {},
+              ),
               SizedBox(height: 10.h),
 
-              SettingsTile(icon: Icons.lock, text: 'Change Password'),
+              SettingsTile(
+                icon: Icons.lock,
+                text: 'Change Password',
+                onPressed: () {},
+              ),
 
               SizedBox(height: 20.h),
 
@@ -95,13 +117,25 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
               ),
               SizedBox(height: 10.h),
-              SettingsTile(icon: Icons.notifications, text: 'Notifications'),
+              SettingsTile(
+                icon: Icons.notifications,
+                text: 'Notifications',
+                onPressed: () {},
+              ),
               SizedBox(height: 10.h),
 
-              SettingsTile(icon: Icons.color_lens, text: 'Theme & Appearance'),
+              SettingsTile(
+                icon: Icons.color_lens,
+                text: 'Theme & Appearance',
+                onPressed: () {},
+              ),
               SizedBox(height: 10.h),
 
-              SettingsTile(icon: Icons.language, text: 'Language'),
+              SettingsTile(
+                icon: Icons.language,
+                text: 'Currency',
+                onPressed: () {},
+              ),
 
               SizedBox(height: 20.h),
 
@@ -118,12 +152,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
               SettingsTile(
                 icon: Icons.fingerprint,
                 text: 'Enable Biometric Login',
+                onPressed: () {},
               ),
               SizedBox(height: 10.h),
 
               SettingsTile(
                 icon: Icons.security,
                 text: 'Two-Factor Authentication',
+                onPressed: () {},
               ),
 
               SizedBox(height: 20.h),
@@ -138,13 +174,25 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
               ),
               SizedBox(height: 10.h),
-              SettingsTile(icon: Icons.info, text: 'About BudgetMate'),
+              SettingsTile(
+                icon: Icons.info,
+                text: 'About BudgetMate',
+                onPressed: () {},
+              ),
               SizedBox(height: 10.h),
 
-              SettingsTile(icon: Icons.privacy_tip, text: 'Privacy Policy'),
+              SettingsTile(
+                icon: Icons.privacy_tip,
+                text: 'Privacy Policy',
+                onPressed: () {},
+              ),
               SizedBox(height: 10.h),
 
-              SettingsTile(icon: Icons.article, text: 'Terms & Conditions'),
+              SettingsTile(
+                icon: Icons.article,
+                text: 'Terms & Conditions',
+                onPressed: () {},
+              ),
 
               SizedBox(height: 20.h),
 

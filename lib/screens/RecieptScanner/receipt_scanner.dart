@@ -38,7 +38,7 @@ class ReceiptScannerPageState extends State<ReceiptScannerPage> {
         "Content-Type": "application/json"
       },
       body: jsonEncode({
-        "model": "gpt-3.5-turbo", // Use GPT-4 if needed
+        "model": "gpt-3.5-turbo", 
         "messages": [
           {"role": "system", "content": "You are an AI that extracts and analyzes receipts."},
           {"role": "user", "content": text}
