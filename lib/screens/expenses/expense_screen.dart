@@ -79,11 +79,12 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
               },
             ),
             SizedBox(height: 20.h),
-            CustomTxtfield2(controller: nameController, name: 'Name'),
+            CustomTxtfield2(controller: nameController, name: 'Name', icon: Icons.insert_emoticon_rounded,),
             SizedBox(height: 30.h),
-            CustomTxtfield2(controller: amountController, name: 'Amount'),
+            CustomTxtfield2(controller: amountController, name: 'Amount', icon: Icons.paid,),
             SizedBox(height: 30.h),
             CustomTxtfield2(
+              icon: Icons.description_outlined,
               controller: descriptionController,
               name: 'Description',
             ),
@@ -96,13 +97,35 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
               },
             ),
             SizedBox(height: 100.h),
-            ActionButton(title: 'Add expense', onPressed: addExpense),
             ElevatedButton(
+              style: ButtonStyle(
+                shape: WidgetStatePropertyAll(
+                  ContinuousRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(16.r)),
+                  ),
+                ),
+                backgroundColor: const WidgetStatePropertyAll(
+                  AppColors.secondaryColor,
+                ),
+              ),
               onPressed: isLoading ? null : addExpense,
               child:
                   isLoading
                       ? const CircularProgressIndicator(color: Colors.white)
-                      : Text('Add expense'),
+                      : SizedBox(
+                        width: 180.w,
+                        height: 60.h,
+                        child: Center(
+                          child: Text(
+                            'Add Expense',
+                            style: TextStyle(
+                              color: AppColors.fontWhite,
+                              fontFamily: 'montserrat',
+                              fontSize: 16.sp,
+                            ),
+                          ),
+                        ),
+                      ),
             ),
           ],
         ),
