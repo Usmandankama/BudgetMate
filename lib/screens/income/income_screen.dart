@@ -90,9 +90,9 @@ class _IncomeScreenState extends State<IncomeScreen> {
               },
             ),
             SizedBox(height: 20.h),
-            CustomTxtfield2(name: 'Name', controller: namecontroller),
+            CustomTxtfield2(name: 'Name', controller: namecontroller,icon: Icons.person,),
             SizedBox(height: 20.h),
-            CustomTxtfield2(name: 'Amount', controller: amountController),
+            CustomTxtfield2(name: 'Amount', controller: amountController, icon: Icons.paid),
             SizedBox(height: 20.h),
             CustomDatepicker(
               onDateSelected: (DateTime selectedDate) {
@@ -105,6 +105,7 @@ class _IncomeScreenState extends State<IncomeScreen> {
 
             SizedBox(height: 20.h),
             CustomTxtfield2(
+              icon: Icons.note,
               name: 'Description',
               controller: decriptionController,
             ),
