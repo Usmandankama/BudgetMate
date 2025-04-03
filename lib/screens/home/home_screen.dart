@@ -1,6 +1,8 @@
 import 'package:budgetmate_2/constatnts/colors.dart';
 import 'package:budgetmate_2/controllers/expense_controller.dart';
 import 'package:budgetmate_2/controllers/income_controller.dart';
+import 'package:budgetmate_2/screens/RecieptScanner/receipt_scanner.dart';
+import 'package:budgetmate_2/screens/addProfilePicture/addProfilePicture_screen.dart';
 import 'package:budgetmate_2/screens/home/components/analytics_text.dart';
 import 'package:budgetmate_2/screens/home/components/transaction_listview.dart';
 import 'package:flutter/material.dart';
@@ -129,12 +131,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         SizedBox(width: 5.w),
                         GestureDetector(
                           onTap: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => ReceiptScannerPage(),
-                            //   ),
-                            // );
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => AddProfilePictureScreen(),
+                              ),
+                            );
                           },
                           child: CircleAvatar(
                             radius: 30.r,
