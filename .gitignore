@@ -48,3 +48,4 @@ lib/firebase_options.dart
 android/app/google-services.json
 android/.gradle/buildOutputCleanup/buildOutputCleanup.lock
 /lib/secrets
+android/.gradle/buildOutputCleanup/buildOutputCleanup.lock
