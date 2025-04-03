@@ -12,11 +12,10 @@ class UserController extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    getUserName();
-    getUserEmail();
+    getUserCredentials();
   }
 
-  Future<void> getUserName() async {
+  Future<void> getUserCredentials() async {
     try {
       User? user = _auth.currentUser;
       if (user == null) {
@@ -32,23 +31,7 @@ class UserController extends GetxController {
       String fetchedName =
           (userDoc.data() as Map<String, dynamic>)['name'] ?? "Unknown";
       userName.value = fetchedName;
-    } catch (e) {
-      Get.snackbar("Error", "Failed to fetch user name");
-    }
-  }
-  Future<void> getUserEmail() async {
-    try {
-      User? user = _auth.currentUser;
-      if (user == null) {
-        Get.snackbar("Error", "No user is logged in");
-        return;
-      }
-      DocumentSnapshot userDoc =
-          await _firestore.collection('users').doc(user.uid).get();
-      if (!userDoc.exists || userDoc.data() == null) {
-        Get.snackbar("Error", "User document not found.");
-        return;
-      }
+
       String fetchedEmail =
           (userDoc.data() as Map<String, dynamic>)['email'] ?? "Unknown";
       email.value = fetchedEmail;
@@ -56,4 +39,6 @@ class UserController extends GetxController {
       Get.snackbar("Error", "Failed to fetch user name");
     }
   }
+
+  //TODO: Get profile picture
 }
