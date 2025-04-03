@@ -45,6 +45,39 @@ class AuthController extends GetxController {
     }
   }
 
+  Future<void> updateUserProfile({
+    required String name,
+    required String email,
+    required String username,
+  }) async {
+    try {
+      User? user = _auth.currentUser;
+
+      if (user != null) {
+        // Update name in Firestore
+        await _firestore.collection('users').doc(user.uid).update({
+          'name': name,
+          'email': email,
+          'username': username,
+        });
+
+        // Update email in FirebaseAuth (if changed)
+        if (user.email != email) {
+          await user.updateEmail(email);
+        }
+
+        // Update the username in Firebase Authentication if necessary
+        // Firebase Authentication doesn't have a direct "username" field, so it would need to be handled separately if desired
+
+        // Show success message
+        Get.snackbar("Success", "Profile updated successfully!");
+      }
+    } catch (e) {
+      // Show error message if update fails
+      Get.snackbar("Error", e.toString());
+    }
+  }
+
   Future<void> loginUser({
     required String email,
     required String password,
