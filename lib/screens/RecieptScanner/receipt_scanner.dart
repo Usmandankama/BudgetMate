@@ -27,39 +27,39 @@ class ReceiptScannerPageState extends State<ReceiptScannerPage> {
   }
 
   /// Send extracted text to ChatGPT API
-  Future<void> _sendToChatGPT(String text) async {
-    const String apiKey = secrets.Secrets.chatgptApikey;
-    const String apiUrl = "https://api.openai.com/v1/chat/completions";
+  // Future<void> _sendToChatGPT(String text) async {
+  //   const String apiKey = secrets.Secrets.chatgptApikey;
+  //   const String apiUrl = "https://api.openai.com/v1/chat/completions";
 
-    final response = await http.post(
-      Uri.parse(apiUrl),
-      headers: {
-        "Authorization": "Bearer $apiKey",
-        "Content-Type": "application/json"
-      },
-      body: jsonEncode({
-        "model": "gpt-3.5-turbo", 
-        "messages": [
-          {"role": "system", "content": "You are an AI that extracts and analyzes receipts."},
-          {"role": "user", "content": text}
-        ]
-      }),
-    );
+  //   final response = await http.post(
+  //     Uri.parse(apiUrl),
+  //     headers: {
+  //       "Authorization": "Bearer $apiKey",
+  //       "Content-Type": "application/json"
+  //     },
+  //     body: jsonEncode({
+  //       "model": "gpt-3.5-turbo", 
+  //       "messages": [
+  //         {"role": "system", "content": "You are an AI that extracts and analyzes receipts."},
+  //         {"role": "user", "content": text}
+  //       ]
+  //     }),
+  //   );
 
-    if (response.statusCode == 200) {
-      final responseData = jsonDecode(response.body);
-      String chatGptResponse = responseData["choices"][0]["message"]["content"];
+  //   if (response.statusCode == 200) {
+  //     final responseData = jsonDecode(response.body);
+  //     String chatGptResponse = responseData["choices"][0]["message"]["content"];
 
-      setState(() {
-        _displayedDetails += "\n\n🤖 ChatGPT: $chatGptResponse";
-      });
-    } else {
-      setState(() {
-        _displayedDetails += "\n\n❌ Failed to get response from ChatGPT.";
-      });
-    }
-  }
-
+  //     setState(() {
+  //       _displayedDetails += "\n\n🤖 ChatGPT: $chatGptResponse";
+  //     });
+  //   } else {
+  //     setState(() {
+  //       _displayedDetails += "\n\n❌ Failed to get response from ChatGPT.";
+  //     });
+  //   }
+  // }
+// TODO: Make payment for chatgpt api key
   /// Extract text from the image using ML Kit
   void _scanReceipt(File image) async {
     final inputImage = InputImage.fromFile(image);
@@ -76,7 +76,7 @@ class ReceiptScannerPageState extends State<ReceiptScannerPage> {
     });
 
     // Send extracted text to ChatGPT
-    await _sendToChatGPT(extractedText);
+    // await _sendToChatGPT(extractedText);
   }
 
   /// Show bottom sheet for image selection
